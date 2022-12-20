@@ -29,11 +29,11 @@ Upon searching for a show, the web site will populate a list of streaming servic
 ## Credits
 
 Collaborators:
-Ray Robinson @ https://Github.com/RayR124CharlesCoxC3
-Aidan Espinoza @ https://github.com/aidanespinosa
-Charles Cox @ https://Github.com/CharlesCoxC3
-Kuan-Yu Huang @ https://Github.com/Jaq41000
-Braxton Waxdeck @ https://Github.com/bbwax
+- Ray Robinson @ https://Github.com/RayR124CharlesCoxC3. 
+- Aidan Espinoza @ https://github.com/aidanespinosa. 
+- Charles Cox @ https://Github.com/CharlesCoxC3. 
+- Kuan-Yu Huang @ https://Github.com/Jaq41000. 
+- Braxton Waxdeck @ https://Github.com/bbwax. 
 
 ## License
 
