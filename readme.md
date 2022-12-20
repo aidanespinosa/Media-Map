@@ -9,7 +9,7 @@ A one-stop web-App wherein a user can search for the name of any given movie and
 - Gone will be the days where clickbait articles and misleading titles give you false or misleading search results. This app will tell you straight forward search results, where you can watch your favorite movies and TV shows with ease and without having to sift through convoluted search results.
 - We learned many things, including how to develop web apps in the back end. Using mySQL, Sequelize, ORM, and working with various APIs (as well as building our own API) to communicate with various online libraries.
 
-## Table of Contents (Optional)
+## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
