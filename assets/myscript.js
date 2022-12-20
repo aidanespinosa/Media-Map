@@ -1,4 +1,5 @@
 const searchButton = document.getElementById(".searchBar");
+const url = "https://api.themoviedb.org/4/list/1?api_key=<<api_key>>";
 
 let results = {
     fetchMovie: function (movie) {

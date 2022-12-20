@@ -6,20 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie map</title>
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/crystal" type="text/css"/>
     <link rel="stylesheet" href="./assets/style.css" />
 </head>
-
+<header class="titleFont" style="font-family:'crystal'">MEDIA MAP</header>
 <body>
     <div class="card">
         <div class="header2">
-            <h2 class="titleFont" style="font-size:xx-large">MEDIA MAP</h2>
-            <div class="search">
-                <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie or Show"> <button
-                    type="button" class="mainBtn" id="searchInput">Search</button>
-            </div>
-            <h2 class="cityName"></h2>
             <h1 class="temp" style="color:black">Search for a Movie and we'll find where you can stream it<span
-                    style="color:rgb(1, 19, 119)"> for FREE!</span></h1>
+                style="color:rgb(1, 19, 119)"> for FREE!</span></h1>
+            <container class="search">
+                <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie or Show">
+                <button type="button" class="mainBtn" id="searchInput">Search</button>
+            </container>
+            <h2 class="cityName"></h2>
             <div class="movieCard" style="width: 15rem;">
                 <div>
                     <div class="recommendation">Featured Free Flix: <span id="description"
