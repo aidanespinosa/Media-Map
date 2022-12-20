@@ -8,8 +8,8 @@ let results = {
 
     displayResults: function (data) {
         const { name } = data;
-        const { description } = data.description[0];
-        const { reviews } = data.main;
+        const { description } = data./*description*/
+        const { reviews } = data./*reviews*/
 
         document.body.style.backgroundImage = "url(\"https://source.unsplash.com/1600x900/?" + name + "\")";
     },
