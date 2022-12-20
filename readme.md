@@ -1,4 +1,4 @@
-# <Movie Map>
+# Movie Map
 
 ## Description
 
