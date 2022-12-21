@@ -8,6 +8,9 @@ const trigger = document.querySelector(".trigger");
 const closeButton = document.querySelector(".close-button");
 const loginButton = document.querySelector(".loginButton");
 const signUpButton = document.querySelector(".signUpButton");
+let contactModal = document.querySelector(".contactModal");
+let signupModal = document.querySelector(".signupModal");
+
 
 function toggleModal() {
     modal.classList.toggle("show-modal");
@@ -22,8 +25,16 @@ function windowOnClick(event) {
 trigger.addEventListener("click", toggleModal);
 closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
-loginButton.addEventListener("click", /*second function*/);
-signUpButton.addEventListener("click", /*second function*/);
+loginButton.addEventListener("click", showLogin());
+signUpButton.addEventListener("click", showSignUp());
+
+function showLogin() {
+    contactModal.classList.remove("hidden");
+}
+
+function showSignUp() {
+    signupModal.classList.remove("hidden");
+}
 
 let results = {
     fetchMovie: function (movie) {
