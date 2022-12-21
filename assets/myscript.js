@@ -1,22 +1,23 @@
 const searchButton = document.getElementById(".searchBar");
-const url = "https://api.themoviedb.org/4/list/1?api_key=<<api_key>>";
+const url = "https://api.themoviedb.org/4/list/1?api_key=a299fbe5ab099ad1c542674fd239f25d";
+const apiKey = "a299fbe5ab099ad1c542674fd239f25d";
 
 let results = {
     fetchMovie: function (movie) {
-        fetch(/*API goes here*/)
+        fetch("https://api.themoviedb.org/4/" + movie + "/1?api_key=" + apiKey)
             .then((response) => response.json()).then((data) => this.displayResults(data));
     },
 
     displayResults: function (data) {
         const { name } = data;
-        const { description } = data./*description*/
-        const { reviews } = data./*reviews*/
+        const { description } = data;
+        const { reviews } = data;
 
         document.body.style.backgroundImage = "url(\"https://source.unsplash.com/1600x900/?" + name + "\")";
     },
 
     fetchResults: function (data) {
-        fetch(/*API oes here again*/).then((response) => response.json()).then((data) => displayFeatures(data));
+        fetch("https://api.themoviedb.org/4/" + data + "/1?api_key=" + apiKey).then((response) => response.json()).then((data) => displayFeatures(data));
 
         function displayFeatures(data) {
             for (let i = 0; i < 5; i++) {
