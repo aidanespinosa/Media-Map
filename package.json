@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/aidanespinosa/stream-team#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
+    "handlebars": "^4.7.7"
   }
 }
