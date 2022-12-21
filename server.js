@@ -12,6 +12,7 @@ app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 
 app.use(mainRouter);
+app.use(express.static('public'));
 
 app.listen(PORT, () =>{
     console.log("Listening on http://localhost:" + PORT);
