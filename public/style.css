@@ -1,0 +1,84 @@
+/* Copied from Rays CSS stylesheet */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: 100vh;
+    background: #222;
+    background-image: url("https://source.unsplash.com/1600x900/?movie");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media screen and (max-width: 700px) {
+    .header {
+        overflow: hidden;
+        background-color: #fff;
+        padding: 20px 150px;
+        height: auto;
+    }
+}
+
+.card {
+    background-color: rgb(84, 85, 85, .8);
+    padding: 2em;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 61%;
+    max-height: auto;
+    margin: 1em;
+    color: aliceblue;
+}
+
+@font-face {
+    font-family: "crystal";
+    src: url(https://fontlibrary.org//face/crystal) format("truetype");
+}
+
+.titleFont {
+    font-weight: 700;
+    color:rgb(165, 6, 6);
+}
+
+.search {
+    display: flex;
+}
+
+.searchBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: .5em;
+    border-radius: 9px;
+    border: none;
+    height: 2em;
+    width: 15em;
+    background: #c4c3c3a7;
+    color: aliceblue;
+}
+
+.mainBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: .5em;
+    border-radius: 9px;
+    border: none;
+    height: 2em;
+    width: 10em;
+    background-color: #c1c0c02b;
+    color: aliceblue;
+}
+
+.row {
+    display: flex;
+}
+
+.titleFont {
+    font-size: 100px;
+    font-family: Impact, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
