@@ -34,12 +34,12 @@ body {
 
 @font-face {
     font-family: "crystal";
-    src: url(https://fontlibrary.org//face/crystal) format("truetype");
+    src: url("https://fontlibrary.org//face/crystal") format("truetype");
 }
 
 .titleFont {
     font-weight: 700;
-    color:rgb(165, 6, 6);
+    color: rgb(165, 6, 6);
 }
 
 .search {
@@ -81,4 +81,133 @@ body {
     font-family: Impact, 'Arial Narrow Bold', sans-serif;
     text-align: center;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem 1.5rem;
+    width: 24rem;
+    border-radius: 0.5rem;
+    background: #1C6EA4;
+    background: -moz-linear-gradient(left, #1C6EA4 0%, #2388CB 65%, #144E75 100%);
+    background: -webkit-linear-gradient(left, #1C6EA4 0%, #2388CB 65%, #144E75 100%);
+    background: linear-gradient(to right, #1C6EA4 0%, #2388CB 65%, #144E75 100%);
+}
+
+.close-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: lightgray;
+}
+
+.close-button:hover {
+    background-color: darkgray;
+}
+
+.show-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.trigger {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    line-height: 18px;
+    padding: 9px;
+    border-radius: 33px;
+    font-family: Georgia, serif;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    background-image: linear-gradient(to right, rgb(28, 110, 164) 0%, rgb(35, 136, 203) 50%, rgb(20, 78, 117) 100%);
+    box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
+    border: 2px solid rgb(28, 110, 164);
+    display: inline-block;
+}
+
+.trigger:hover {
+    background: #1C6EA4;
+}
+
+.trigger:active {
+    background: #144E75;
+}
+
+.loginButton {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    line-height: 18px;
+    padding: 9px;
+    border-radius: 33px;
+    font-family: Georgia, serif;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    background-image: linear-gradient(to right, rgb(28, 110, 164) 0%, rgb(35, 136, 203) 50%, rgb(20, 78, 117) 100%);
+    box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
+    border: 2px solid rgb(28, 110, 164);
+    display: inline-block;
+    margin: 10px;
+}
+
+.loginButton:hover {
+    background: #1C6EA4;
+}
+
+.loginButton:active {
+    background: #144E75;
+}
+
+.signUpButton {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    line-height: 18px;
+    padding: 9px;
+    border-radius: 33px;
+    font-family: Georgia, serif;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    background-image: linear-gradient(to right, rgb(28, 110, 164) 0%, rgb(35, 136, 203) 50%, rgb(20, 78, 117) 100%);
+    box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
+    border: 2px solid rgb(28, 110, 164);
+    display: inline-block;
+    margin: 10px;
+}
+
+.signUpButton:hover {
+    background: #1C6EA4;
+}
+
+.signUpButton:active {
+    background: #144E75;
 }
