@@ -6,10 +6,12 @@ const providersUrl = "https://api.themoviedb.org/3/movie/{movie_id}/watch/provid
 
 const modal = document.querySelector(".modal");
 const trigger = document.querySelector(".trigger");
+const homeCard = document.querySelector(".card");
 const closeButton = document.querySelector(".close-button");
 const loginButton = document.querySelector(".loginButton");
 const signUpButton = document.querySelector(".signUpButton");
 const resultsModal = document.querySelector(".resultsModal");
+const recommendation = document.querySelector(".recommendation");
 
 function toggleModal() {
     modal.classList.toggle("show-modal");
@@ -29,6 +31,14 @@ loginButton.addEventListener("click", showLogin);
 signUpButton.addEventListener("click", showSignUp);
 const loginModal = document.querySelector(".Login-Modal");
 const signUpModal = document.querySelector(".signUp");
+
+const resultsCloseButton = document.querySelector(".results-close-button");
+
+resultsCloseButton.addEventListener("click", toggleResultsModal);
+
+function toggleResultsModal() {
+    resultsModal.classList.add("hidden");
+}
 
 function showLogin() {
     let loginModal = document.querySelector(".Login-Modal");
@@ -72,6 +82,9 @@ let results = {
         document.querySelector(".title").innerText = name;
         document.querySelector(".description").innerText = "Movie Summary: " + description;
         document.querySelector(".review").innerText = "Viewer Score: " + reviews;
+        let provider = data.id;
+        let source = fetch("https://api.themoviedb.org/3/movie/" + provider + "/watch/providers?api_key=" + apiKey);
+        document.querySelector(".providers").innerText = "You can stream this on: " + source;
         console.log(data);
         document.body.style.backgroundImage = "url(\"https://source.unsplash.com/1600x900/?movie&query=" + name + ")";
     },
@@ -83,7 +96,7 @@ let results = {
             features = data.results[i];
             for (let i = 0; i < 6; i++) {
                 const thumbnail = features.poster_path;
-                document.querySelector(`.feature${i + 1}`).classList.remove("hidden");
+                recommendation.classList.remove("hidden");
                 let path = "https://image.tmdb.org/t/p/w500" + thumbnail;
                 // calls the results and returns a thumbnail to each feature card
                 document.querySelector(`.feature${i + 1}`).innerHTML = `<img src="${path}">`;
@@ -113,7 +126,7 @@ let providerResults = {
         let provider = data.id;
         fetch("https://api.themoviedb.org/3/movie/" + provider + "/watch/providers?api_key=" + apiKey)
             .then((response) => response.json()).then((data) => this.displayProvider(data));
-        document.querySelector(".providers").innerText = provider;
-        console.log(provider);
+        document.querySelector(".providers").innerText = "You can stream this on: " + provider;
+        console.log(providerResults);
     },
 }
