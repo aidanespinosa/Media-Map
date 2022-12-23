@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS stream_team;
+CREATE DATABASE IF NOT EXISTS stream_team;
