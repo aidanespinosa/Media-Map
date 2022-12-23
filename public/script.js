@@ -74,19 +74,21 @@ let results = {
             .then((response) => response.json()).then((data) => this.displayResults(data));
     },
 
-    displayResults: function (data) {
+    displayResults: async function (data) {
         data = data.results[0];
         let name = data.original_title;
         let description = data.overview;
         let reviews = data.vote_average;
+        let title = data.title;
         document.querySelector(".title").innerText = name;
         document.querySelector(".description").innerText = "Movie Summary: " + description;
         document.querySelector(".review").innerText = "Viewer Score: " + reviews;
         let provider = data.id;
-        let source = fetch("https://api.themoviedb.org/3/movie/" + provider + "/watch/providers?api_key=" + apiKey);
+        const result = await fetch("https://api.themoviedb.org/3/movie/" + provider + "/watch/providers?api_key=" + apiKey);
+        let source = await result.json();
         document.querySelector(".providers").innerText = "You can stream this on: " + source;
         console.log(data);
-        document.body.style.backgroundImage = "url(\"https://source.unsplash.com/1600x900/?movie&query=" + name + ")";
+        document.body.style.backgroundImage = "url(\"https://source.unsplash.com/1600x900/?movie&query=" + title + ")";
     },
 
     fetchResults: function (features) {
@@ -96,7 +98,6 @@ let results = {
             features = data.results[i];
             for (let i = 0; i < 6; i++) {
                 const thumbnail = features.poster_path;
-                recommendation.classList.remove("hidden");
                 let path = "https://image.tmdb.org/t/p/w500" + thumbnail;
                 // calls the results and returns a thumbnail to each feature card
                 document.querySelector(`.feature${i + 1}`).innerHTML = `<img src="${path}">`;
@@ -120,7 +121,7 @@ document.querySelector(".searchBar").addEventListener("keyup", function (event) 
     }
 })
 
-let providerResults = {
+/*let providerResults = {
     displayProvider: function (data) {
         data = data.results[0];
         let provider = data.id;
@@ -129,4 +130,4 @@ let providerResults = {
         document.querySelector(".providers").innerText = "You can stream this on: " + provider;
         console.log(providerResults);
     },
-}
+}*/
