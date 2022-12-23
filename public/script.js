@@ -8,9 +8,6 @@ const trigger = document.querySelector(".trigger");
 const closeButton = document.querySelector(".close-button");
 const loginButton = document.querySelector(".loginButton");
 const signUpButton = document.querySelector(".signUpButton");
-let contactModal = document.querySelector(".contactModal");
-let signupModal = document.querySelector(".signupModal");
-
 
 function toggleModal() {
     modal.classList.toggle("show-modal");
@@ -25,15 +22,38 @@ function windowOnClick(event) {
 trigger.addEventListener("click", toggleModal);
 closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
-loginButton.addEventListener("click", showLogin());
-signUpButton.addEventListener("click", showSignUp());
+
+loginButton.addEventListener("click", showLogin);
+signUpButton.addEventListener("click", showSignUp);
+const loginModal = document.querySelector(".Login-Modal");
+const signUpModal = document.querySelector(".signUp");
 
 function showLogin() {
-    contactModal.classList.remove("hidden");
+    let loginModal = document.querySelector(".Login-Modal");
+    toggleModal();
+    loginModal.classList.remove("hidden");
+}
+
+const loginCloseButton = document.querySelector(".login-close-button");
+
+loginCloseButton.addEventListener("click", toggleLoginModal);
+
+function toggleLoginModal () {
+    loginModal.classList.add("hidden");
 }
 
 function showSignUp() {
-    signupModal.classList.remove("hidden");
+    let signUpModal = document.querySelector(".signUp");
+    toggleModal();
+    signUpModal.classList.remove("hidden");
+}
+
+const signupCloseButton = document.querySelector(".signup-close-button");
+
+signupCloseButton.addEventListener("click", toggleSignupModal);
+
+function toggleSignupModal () {
+    signUpModal.classList.add("hidden");
 }
 
 let results = {
@@ -54,10 +74,10 @@ let results = {
         fetch("https://api.themoviedb.org/3/" + data + "movie/550?api_key=a299fbe5ab099ad1c542674fd239f25d").then((response) => response.json()).then((data) => displayFeatures(data));
 
         function displayFeatures(data) {
-            for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < 6; i++) {
                 const thumbnail = data;/*thumbnail icon from API call*/
                 // calls the results and returns a thumbnail to each feature card, up to 6
-                document.querySelector(`.feature${i + 2}`).innerHTML = thumbnail;
+                document.querySelector(`.feature${i + 1}`).innerHTML = thumbnail;
             }
         }
     },

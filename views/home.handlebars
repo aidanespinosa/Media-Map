@@ -1,127 +1,133 @@
 <div style="text-align:center">
-    <button class="trigger">Login or Create an account</button>
-    <div class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <button class="loginButton">Login</button>
-            <button class="signUpButton">Sign Up</button>
-        </div>
+  <button class="trigger">Login or Create an account</button>
+  <div class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <button class="loginButton" onclick="showLogin()">Login</button>
+      <button class="signUpButton" onclick="showSignUp()">Sign Up</button>
     </div>
+  </div>
 </div>
 <div class="card">
-    <div class="header2">
-        <h1 class="temp" style="color:black">Search for a Movie and we'll find where you can stream it<span
-                style="color:rgb(1, 19, 119)"> for FREE!</span></h1>
-        <container class="search">
-            <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie or Show">
-            <button type="button" class="mainBtn" id="searchInput">Search</button>
-        </container>
-        <h2 class="cityName"></h2>
-        <div class="movieCard" style="width: 15rem;">
-            <div>
-                <div class="recommendation">Featured Free Flix: <span id="description" style="font-size:larger"></span>
-                </div>
-                <div class="row">
-                    <div class="card" style="width: 4rem;">
-                        <div class="card-body">
-                            <div class="card-text">
-                                <card class="feature1">Feature 1. <span id="feature1"></span></card>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 4rem;">
-                        <div class="card-body">
-                            <div class="card-text">
-                                <card class="feature2">Feature 2. <span id="feature2"></span></card>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 4rem;">
-                        <div class="card-body">
-                            <div class="card-text">
-                                <card class="feature3">Feature 3. <span id="feature3"></span></card>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 4rem;">
-                        <div class="card-body">
-                            <div class="card-text">
-                                <card class="feature4">Feature 4. <span id="feature4"></span></card>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 4rem;">
-                        <div class="card-body">
-                            <div class="card-text">
-                                <card class="feature5">Feature 5. <span id="feature5"></span></card>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 4rem;">
-                        <div class="card-body">
-                            <div class="card-text">
-                                <card class="feature6">Feature 6. <span id="feature6"></span></card>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="header2">
+    <h1 class="temp" style="color:black">Search for a Movie and we'll find where you can stream it<span
+        style="color:rgb(1, 19, 119)"> for FREE!</span></h1>
+    <container class="search">
+      <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie or Show">
+      <button type="button" class="mainBtn" id="searchInput">Search</button>
+    </container>
+    <h2 class="cityName"></h2>
+    <div class="movieCard" style="width: 15rem;">
+      <div> <!-- Cards for Thumbnails to recommended movies -->
+        <div class="recommendation">Featured Free Flix: <span id="description" style="font-size:larger"></span>
         </div>
+        <div class="row">
+          <div class="card" style="width: 4rem;">
+            <div class="card-body">
+              <div class="card-text">
+                <card class="feature1">Feature 1. <span id="feature1"></span></card>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="width: 4rem;">
+            <div class="card-body">
+              <div class="card-text">
+                <card class="feature2">Feature 2. <span id="feature2"></span></card>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="width: 4rem;">
+            <div class="card-body">
+              <div class="card-text">
+                <card class="feature3">Feature 3. <span id="feature3"></span></card>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="width: 4rem;">
+            <div class="card-body">
+              <div class="card-text">
+                <card class="feature4">Feature 4. <span id="feature4"></span></card>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="width: 4rem;">
+            <div class="card-body">
+              <div class="card-text">
+                <card class="feature5">Feature 5. <span id="feature5"></span></card>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="width: 4rem;">
+            <div class="card-body">
+              <div class="card-text">
+                <card class="feature6">Feature 6. <span id="feature6"></span></card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
 <!--Login Modal-->
-<div class="contactModal">
-    <div id="Login Modal" class="modal">
-        <form class="contactModal-content">
-            <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" id="login-username" required>
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" id="login-password" required>
-            <button type="Login" id="login-form-button">Login</button>
-            <label>
-                <div class="RemMe">
-                    <input type="checkbox" checked="checked" name="remember"> Remember me
-            </label>
-    </div>
-    <div>
+<div class="Login-Modal hidden">
+  <div id="Login Modal" class="loginModal">
+    <form class="modal-content">
+      <span class="login-close-button">&times;</span>
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" id="login-username" required>
+      <div>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" id="login-password" required>
+      </div>
+      <button type="Login" id="login-form-button" class="login-form-button">Login</button>
+      <label>
+        <div class="RemMe">
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </div>
+      </label>
+      <div>
         <label>
-            <div class="NoAccount">Don't have an Account? Click <a href="#">Here</a> to Sign Up!
+          <div class="NoAccount">Don't have an Account? Click <a href="#">Here</a> to Sign Up!
         </label>
-    </div>
-</div>
-<div class="ForgotPsw">
+      </div>
+  </div>
+  <div class="ForgotPsw">
     <span class="psw"> <a href="#">Forgot Password?</a></span>
+  </div>
+  </form>
 </div>
-</form>
+</div>
 
-<!-- sign-up modal drop down list -->
-<div class="signupModal">
-    <div id="SignUp Modal" class="modalodal">
-        <form class="signupModal-content">
-            <div>
-                <label for="email"><b>Email</b></label>
-                <input type="text" id="sign-up-email" name="email" placeholder="Enter Email address" required>
-            </div>
-            <div>
-                <label for="Firstname"><b>First Name</b></label>
-                <input type="text" placeholder="First Name" id="sign-up-first-name" name="Firstname" required>
-            </div>
-            <div>
-                <label for="Lastname"><b>Last Name</b></label>
-                <input type="text" placeholder="Enter Last Name" id="sign-up-last-name" name="Lastname" required>
-            </div>
-            <div>
-                <label for="uname"><b>Create a Username</b></label>
-                <input type="text" placeholder="Create Username" name="uname" id="sign-up-username" required>
-            </div>
-            <div class="signUpBtn">
-                <button type="Signup" id="signup-form-button">Sign Up</button>
-            </div>
-            <label>
-                <div class="RemMe">
-                    <input type="checkbox" checked="checked" name="remember"> Remember me for future visits.
-            </label>
-    </div>
-    </form>
+<!--Sign Up Modal Section-->
+<div class="signUp hidden">
+  <div id="SignUp Modal" class="signUpModal">
+    <form class="modal-content">
+      <span class="signup-close-button">&times;</span>
+      <div>
+        <label for="email"><b>Email</b></label>
+        <input type="text" id="sign-up-email" name="email" placeholder="Enter Email address" required>
+      </div>
+      <div>
+        <label for="Firstname"><b>First Name</b></label>
+        <input type="text" placeholder="First Name" id="sign-up-first-name" name="Firstname" required>
+      </div>
+      <div>
+        <label for="Lastname"><b>Last Name</b></label>
+        <input type="text" placeholder="Enter Last Name" id="sign-up-last-name" name="Lastname" required>
+      </div>
+      <div>
+        <label for="uname"><b>Create a Username</b></label>
+        <input type="text" placeholder="Create Username" name="uname" id="sign-up-username" required>
+      </div>
+      <div class="signUpBtn">
+        <button type="Signup" id="signup-form-button">Sign Up</button>
+      </div>
+      <label>
+        <div class="RemMe">
+          <input type="checkbox" checked="checked" name="remember"> Remember me for future visits.
+      </label>
+  </div>
+  </form>
 </div>
