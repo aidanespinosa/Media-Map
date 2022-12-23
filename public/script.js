@@ -84,7 +84,7 @@ let results = {
         document.querySelector(".title").innerText = name;
         document.querySelector(".description").innerText = "Movie Summary: " + description;
         document.querySelector(".review").innerText = "Viewer Score: " + reviews;
-        document.body.style.backgroundImage = "url(\"https://source.unsplash.com/1600x900/?movie&query=" + title + ")";
+        document.body.style.backgroundImage = "url(\"https://source.unsplash.com/1600x900/?movies)";
         let provider = data.id;
         const result = await fetch("https://api.themoviedb.org/3/movie/" + provider + "/watch/providers?api_key=" + apiKey);
         let source = await result.json();
@@ -97,11 +97,10 @@ let results = {
                     providerMap[rate.provider_id] = rate.provider_name;
             }}
         })
-        console.log(providerMap);
+        //console.log(data);
+        //console.log(providerMap);
         const providers = Object.values(providerMap).join(", ");
         document.querySelector(".providers").innerText = "You can stream this on: " + providers;
-        console.log(data);
-        console.log(source);
     },
 
     //this section theoretically populates a list of suggested movies, it does not work
