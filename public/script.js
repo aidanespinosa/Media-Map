@@ -66,23 +66,29 @@ let results = {
     displayResults: function (data) {
         data = data.results[0];
         let name = data.original_title;
-        let description = data.overview;/*description*/
-        let reviews = data.vote_average;/*reviews*/
+        let description = data.overview;
+        let reviews = data.vote_average;
+        document.querySelector(".title").innerText = name;
+        document.querySelector(".description").innerText = "Movie Summary: " + description;
+        document.querySelector(".review").innerText = "Viewer Score: " + reviews;
         console.log(data);
         document.body.style.backgroundImage = "url(\"https://source.unsplash.com/1600x900/?movie&query=" + name + ")";
     },
 
-    /*fetchResults: function (movie) {
-        fetch("https://api.themoviedb.org/3/search/" + movie + "?" + apiKey + "&language=en-US&page=1&include_adult=false").then((response) => response.json()).then((data) => displayFeatures(data));
+    fetchResults: function (features) {
+        fetch("https://api.themoviedb.org/3/search/movie?api_key=" + apiKey + "&language=en-US&page=1&include_adult=false&query=").then((response) => response.json()).then((data) => displayFeatures(data));
 
-        function displayFeatures(data) {
+        function displayFeatures(features) {
+            features = data.results[i];
+            `.feature${i + 1}.classlist.remove("hidden")`;
             for (let i = 0; i < 6; i++) {
-                const thumbnail = data;/*thumbnail icon from API call
-                // calls the results and returns a thumbnail to each feature card, up to 6
-                document.querySelector(`.feature${i + 1}`).innerHTML = thumbnail;
+                const thumbnail = features.poster_path;
+                let path = '"https://image.tmdb.org/t/p/w500" + thumbnail';
+                // calls the results and returns a thumbnail to each feature card
+                document.querySelector(`.feature${i + 1}`).innerHTML = `<img src="${path}">`;
             }
         }
-    },*/
+    },
     
     search: function () {
         this.fetchMovie(document.querySelector(".searchBar").value);
