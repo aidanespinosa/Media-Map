@@ -72,6 +72,11 @@ body {
     color: aliceblue;
 }
 
+.mainBtn:hover {
+    background-color: darkgray;
+    cursor: pointer;
+}
+
 .row {
     display: flex;
 }
@@ -123,6 +128,7 @@ body {
 
 .close-button:hover {
     background-color: darkgray;
+    cursor: pointer;
 }
 
 .login-close-button {
@@ -137,6 +143,7 @@ body {
 
 .login-close-button:hover {
     background-color: darkgray;
+    cursor: pointer;
 }
 
 .signup-close-button {
@@ -151,6 +158,7 @@ body {
 
 .signup-close-button:hover {
     background-color: darkgray;
+    cursor: pointer;
 }
 
 .show-modal {
@@ -180,6 +188,7 @@ body {
 
 .trigger:hover {
     background: #1C6EA4;
+    cursor: pointer;
 }
 
 .trigger:active {
@@ -207,6 +216,7 @@ body {
 
 .loginButton:hover {
     background: #1C6EA4;
+    cursor: pointer;
 }
 
 .loginButton:active {
@@ -234,6 +244,7 @@ body {
 
 .signUpButton:hover {
     background: #1C6EA4;
+    cursor: pointer;
 }
 
 .signUpButton:active {
@@ -314,6 +325,7 @@ body {
 
 .login-form-button:hover {
     background: #1C6EA4;
+    cursor: pointer;
 }
 
 .login-form-button:active {
@@ -341,6 +353,7 @@ body {
 
 .signup-form-button:hover {
     background: #1C6EA4;
+    cursor: pointer;
 }
 
 .signup-form-button:active {

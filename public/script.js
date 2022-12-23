@@ -39,7 +39,7 @@ const loginCloseButton = document.querySelector(".login-close-button");
 
 loginCloseButton.addEventListener("click", toggleLoginModal);
 
-function toggleLoginModal () {
+function toggleLoginModal() {
     loginModal.classList.add("hidden");
 }
 
@@ -53,7 +53,7 @@ const signupCloseButton = document.querySelector(".signup-close-button");
 
 signupCloseButton.addEventListener("click", toggleSignupModal);
 
-function toggleSignupModal () {
+function toggleSignupModal() {
     signUpModal.classList.add("hidden");
 }
 
@@ -85,17 +85,16 @@ let results = {
 
     search: function () {
         this.fetchResults(document.querySelector(".searchBar").value);
+        resultsModal.classList.remove("hidden");
     },
 };
 
 document.querySelector(".mainBtn").addEventListener("click", function () {
     results.search();
-    resultsModal.classList.remove("hidden");
 });
 // allows for "enter" to be placed when searching instead of requiring a mouse click
 document.querySelector(".searchBar").addEventListener("keyup", function (event) {
     if (event.key == "Enter") {
         results.search();
-        resultsModal.classList.remove("hidden");
     }
 })
