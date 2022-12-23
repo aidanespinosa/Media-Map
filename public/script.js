@@ -2,6 +2,7 @@ const searchButton = document.getElementById(".searchBar");
 const url = "https://api.themoviedb.org/3/search/movie?api_key=a299fbe5ab099ad1c542674fd239f25d&language=en-US&page=1&include_adult=false";
 const apiKey = "a299fbe5ab099ad1c542674fd239f25d";
 const readAccessToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMjk5ZmJlNWFiMDk5YWQxYzU0MjY3NGZkMjM5ZjI1ZCIsInN1YiI6IjYzYTI4ZjU5MmYzYjE3MDA4NWRkNDM0YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Uixy0unpQnM8ymcpZ71z1YTcv_PwBCSnK81qGl6PZ5Q";
+const providersUrl = "https://api.themoviedb.org/3/movie/{movie_id}/watch/providers?api_key=a299fbe5ab099ad1c542674fd239f25d"
 
 const modal = document.querySelector(".modal");
 const trigger = document.querySelector(".trigger");
@@ -80,16 +81,16 @@ let results = {
 
         function displayFeatures(features) {
             features = data.results[i];
-            `.feature${i + 1}.classlist.remove("hidden")`;
             for (let i = 0; i < 6; i++) {
                 const thumbnail = features.poster_path;
-                let path = '"https://image.tmdb.org/t/p/w500" + thumbnail';
+                document.querySelector(`.feature${i + 1}`).classList.remove("hidden");
+                let path = "https://image.tmdb.org/t/p/w500" + thumbnail;
                 // calls the results and returns a thumbnail to each feature card
                 document.querySelector(`.feature${i + 1}`).innerHTML = `<img src="${path}">`;
             }
         }
     },
-    
+
     search: function () {
         this.fetchMovie(document.querySelector(".searchBar").value);
         resultsModal.classList.remove("hidden");
@@ -105,3 +106,14 @@ document.querySelector(".searchBar").addEventListener("keyup", function (event) 
         results.search();
     }
 })
+
+let providerResults = {
+    displayProvider: function (data) {
+        data = data.results[0];
+        let provider = data.id;
+        fetch("https://api.themoviedb.org/3/movie/" + provider + "/watch/providers?api_key=" + apiKey)
+            .then((response) => response.json()).then((data) => this.displayProvider(data));
+        document.querySelector(".providers").innerText = provider;
+        console.log(provider);
+    },
+}
