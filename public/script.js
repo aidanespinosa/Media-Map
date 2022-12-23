@@ -86,6 +86,7 @@ let results = {
     search: function () {
         this.fetchResults(document.querySelector(".searchBar").value);
         resultsModal.classList.remove("hidden");
+        console.error("text");
     },
 };
 
