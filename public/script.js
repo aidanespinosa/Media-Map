@@ -84,17 +84,30 @@ let results = {
         document.querySelector(".title").innerText = name;
         document.querySelector(".description").innerText = "Movie Summary: " + description;
         document.querySelector(".review").innerText = "Viewer Score: " + reviews;
+        document.body.style.backgroundImage = "url(\"https://source.unsplash.com/1600x900/?movie&query=" + title + ")";
         let provider = data.id;
         const result = await fetch("https://api.themoviedb.org/3/movie/" + provider + "/watch/providers?api_key=" + apiKey);
         let source = await result.json();
-        let providers = source.results.flatrate.provider_name;
+        //let providers = source.results.flatrate[0].provider_name;
+        const providerMap ={};
+        Object.keys(source.results).forEach((key) => {
+            const data = source.results[key];
+            if (data.flatrate) {
+                for (const rate of data.flatrate) {
+                    providerMap[rate.provider_id] = rate.provider_name;
+            }}
+        })
+        console.log(providerMap);
+        const providers = Object.values(providerMap).join(", ");
         document.querySelector(".providers").innerText = "You can stream this on: " + providers;
         console.log(data);
         console.log(source);
-        document.body.style.backgroundImage = "url(\"https://source.unsplash.com/1600x900/?movie&query=" + title + ")";
     },
 
+    //this section theoretically populates a list of suggested movies, it does not work
     /*fetchResults: function (features) {
+        const movieCard = document.querySelector(".movieCard");
+        movieCard.classList.remove("hidden");
         fetch("https://api.themoviedb.org/3/search/movie?api_key=" + apiKey + "&language=en-US&page=1&include_adult=false&query=").then((response) => response.json()).then((data) => displayFeatures(data));
 
         function displayFeatures(features) {
@@ -123,14 +136,3 @@ document.querySelector(".searchBar").addEventListener("keyup", function (event) 
         results.search();
     }
 })
-
-/*let providerResults = {
-    displayProvider: function (data) {
-        data = data.results[0];
-        let provider = data.id;
-        fetch("https://api.themoviedb.org/3/movie/" + provider + "/watch/providers?api_key=" + apiKey)
-            .then((response) => response.json()).then((data) => this.displayProvider(data));
-        document.querySelector(".providers").innerText = "You can stream this on: " + provider;
-        console.log(providerResults);
-    },
-}*/
