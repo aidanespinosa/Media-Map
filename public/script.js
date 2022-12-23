@@ -8,6 +8,7 @@ const trigger = document.querySelector(".trigger");
 const closeButton = document.querySelector(".close-button");
 const loginButton = document.querySelector(".loginButton");
 const signUpButton = document.querySelector(".signUpButton");
+const resultsModal = document.querySelector(".resultsModal");
 
 function toggleModal() {
     modal.classList.toggle("show-modal");
@@ -89,10 +90,12 @@ let results = {
 
 document.querySelector(".mainBtn").addEventListener("click", function () {
     results.search();
+    resultsModal.classList.remove("hidden");
 });
 // allows for "enter" to be placed when searching instead of requiring a mouse click
 document.querySelector(".searchBar").addEventListener("keyup", function (event) {
     if (event.key == "Enter") {
         results.search();
+        resultsModal.classList.remove("hidden");
     }
 })
