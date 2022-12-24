@@ -184,6 +184,10 @@ body {
     cursor: pointer;
 }
 
+.visibility {
+    display: none;
+}
+
 .show-modal {
     opacity: 1;
     visibility: visible;

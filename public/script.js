@@ -39,6 +39,7 @@ resultsCloseButton.addEventListener("click", toggleResultsModal);
 
 function toggleResultsModal() {
     resultsModal.classList.add("hidden");
+    homeCard.classList.remove("visibility");
 }
 
 function showLogin() {
@@ -121,8 +122,13 @@ let results = {
     },*/
 
     search: function () {
-        this.fetchMovie(document.querySelector(".searchBar").value);
+        let searchBar = document.querySelector(".searchBar").value;
+        if (searchBar.length == 0) {
+            return;
+          }
+        this.fetchMovie(searchBar);
         resultsModal.classList.remove("hidden");
+        homeCard.classList.add("visibility");
     },
 };
 
