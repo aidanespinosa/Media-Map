@@ -4,7 +4,7 @@ const apiKey = "a299fbe5ab099ad1c542674fd239f25d";
 const readAccessToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMjk5ZmJlNWFiMDk5YWQxYzU0MjY3NGZkMjM5ZjI1ZCIsInN1YiI6IjYzYTI4ZjU5MmYzYjE3MDA4NWRkNDM0YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Uixy0unpQnM8ymcpZ71z1YTcv_PwBCSnK81qGl6PZ5Q";
 
 const modal = document.querySelector(".modal");
-const trigger = document.querySelector(".trigger");
+const loginPage = document.querySelector(".trigger");
 const closeButton = document.querySelector(".close-button");
 const loginButton = document.querySelector(".loginButton");
 const signUpButton = document.querySelector(".signUpButton");
@@ -20,12 +20,12 @@ function windowOnClick(event) {
     }
 }
 
-trigger.addEventListener("click", toggleModal);
-closeButton.addEventListener("click", toggleModal);
+//trigger.addEventListener("click", toggleModal);
+//closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
 
-loginButton.addEventListener("click", showLogin);
-signUpButton.addEventListener("click", showSignUp);
+//loginButton.addEventListener("click", showLogin);
+//signUpButton.addEventListener("click", showSignUp);
 const loginModal = document.querySelector(".Login-Modal");
 const signUpModal = document.querySelector(".signUp");
 
@@ -37,7 +37,7 @@ function showLogin() {
 
 const loginCloseButton = document.querySelector(".login-close-button");
 
-loginCloseButton.addEventListener("click", toggleLoginModal);
+//loginCloseButton.addEventListener("click", toggleLoginModal);
 
 function toggleLoginModal() {
     loginModal.classList.add("hidden");
@@ -99,3 +99,11 @@ document.querySelector(".searchBar").addEventListener("keyup", function (event) 
         results.search();
     }
 })
+
+const loginFormButton = document.getElementById("login-form-button");
+
+loginPage.addEventListener("click",()=>{
+    window.location.replace('/login');
+
+})
+

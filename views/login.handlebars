@@ -1,0 +1,67 @@
+<div style="margin-left: -50%">
+    <button id='go-back-button' class="trigger">Go Back</button>
+</div>
+<div class="card">
+    <div class="login-card">
+
+        <form id="login-form">
+            <h2>Existing Users: <br> Sign in Here! </h2>
+            <div>
+                Username: <input class="searchBar" type="text" id="username" placeholder="Username Here">
+            </div>
+            <div>
+                Password: <input class="searchBar" type="password" id="password" placeholder="Password Here">
+            </div>
+            <button class="mainBtn">
+                Login
+            </button>
+        </form>
+    </div>
+    <div class="login-card">
+        <form id="signup-form">
+            <h2>New Users: <br> Sign-Up Here!</h2>
+            <div>
+                Username: <input class="searchBar" type="text" id="signup_username" placeholder="Username Here">
+            </div>
+            <div>
+                Password: <input class="searchBar" type="password" id="signup_password" placeholder="Password Here">
+            </div>
+            <button class="mainBtn">
+                Sign-Up
+            </button>
+        </form>
+    </div>
+
+</div>
+
+
+<script>
+    document.getElementById("login-form").addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const username = document.getElementById("username").value;
+
+        const password = document.getElementById("password").value;
+
+        console.log("username:", username, "password:", password);
+
+        fetch("/api/user/login", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+
+            },
+            body: JSON.stringify({
+                username,
+                password,
+            }),
+
+        });
+
+    });
+
+    document.getElementById('go-back-button').addEventListener('click', () => {
+        window.location.replace('/');
+    });
+
+</script>

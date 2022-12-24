@@ -30,6 +30,7 @@ body {
     max-height: auto;
     margin: 1em;
     color: aliceblue;
+    display: flex;
 }
 
 /*@font-face {
@@ -72,11 +73,62 @@ body {
     color: aliceblue;
 }
 
+
+
 .mainBtn:hover {
     background-color: darkgray;
     cursor: pointer;
 }
 
+.go-back-button {
+    position: relative;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: .5em;
+    border-radius: 9px;
+    border: none;
+    height: 2em;
+    width: 10em;
+    background-color: #c1c0c02b;
+    color: aliceblue;
+  }
+
+  
+.go-back-button:hover {
+    background-color: darkgray;
+    cursor: pointer;
+}
+
+.login-card{
+    flex-grow: 1;
+}
+
+.footer-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(84, 85, 85, .8);
+    color: #fff;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+
+
+}
+
+.github-link{
+    color: #fff; 
+    text-decoration:none; 
+}
+.github-link:hover {
+    color: rgb(184, 101, 101);
+}
 .row {
     display: flex;
 }

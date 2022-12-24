@@ -82,7 +82,7 @@
         <input type="password" placeholder="Enter Password" name="psw" id="login-password" required>
       </div>
       <button type="Login" id="login-form-button" class="login-form-button">Login</button>
-      <label>
+      {{!-- <label>
         <div class="RemMe">
           <input type="checkbox" checked="checked" name="remember"> Remember me
         </div>
@@ -95,7 +95,7 @@
   </div>
   <div class="ForgotPsw">
     <span class="psw"> <a href="#">Forgot Password?</a></span>
-  </div>
+  </div> --}}
   </form>
 </div>
 </div>
@@ -105,7 +105,7 @@
   <div id="SignUp Modal" class="signUpModal">
     <form class="modal-content">
       <span class="signup-close-button">&times;</span>
-      <div>
+      {{!-- <div>
         <label for="email"><b>Email</b></label>
         <input type="text" id="sign-up-email" name="email" placeholder="Enter Email address" required>
       </div>
@@ -116,10 +116,14 @@
       <div>
         <label for="Lastname"><b>Last Name</b></label>
         <input type="text" placeholder="Enter Last Name" id="sign-up-last-name" name="Lastname" required>
-      </div>
+      </div> --}}
       <div>
         <label for="uname"><b>Create a Username</b></label>
-        <input type="text" placeholder="Create Username" name="uname" id="sign-up-username" required>
+        <input type="text" placeholder="Username" name="uname" id="sign-up-username" required>
+      </div>
+      <div>
+        <label for="pword"><b>Create a Username</b></label>
+        <input type="text" placeholder="Password" name="pword" id="sign-up-password" required>
       </div>
       <div class="signUpBtn">
         <button type="Signup" id="signup-form-button" class="signup-form-button">Sign Up</button>
@@ -151,3 +155,5 @@
     </div>
   </div>
 </div>
+
+<script src="/script.js"></script>
