@@ -160,7 +160,6 @@
         const password = document.getElementById("login-password").value;
         
         console.log(username, password)
-      //  document.getElementById("errors").textContent = "";  
         
         fetch("/api/user/login", {
             method: 'POST',
@@ -173,7 +172,7 @@
             }),
         }).then((result) => {
             if (!result.ok) {
-              document.getElementById("errors").textContent = "Unable to login";  
+              window.alert = "Unable to login";  
               return null;
             } else {
                 return result.json();
