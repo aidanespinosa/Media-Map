@@ -19,9 +19,25 @@ usersRouter.post("/login", async (req, res) => {
 });
 
 usersRouter.post("/signup", async (req, res) => {
-    console.log(req.body);
 
-    res.end();
+    const { email, firstname, lastname, username, password } = req.body;
+
+    const user = await User.findOne({ where: { username } });
+
+    if (user) {
+        res.status(409).end('User already exist');
+        return;
+    }
+
+    const newUserObject = await User.create({
+        email,
+        firstname,
+        lastname,
+        username,
+        password,
+    })
+
+    res.status(200).json(newUserObject);
 
 });
 

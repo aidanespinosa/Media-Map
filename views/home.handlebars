@@ -81,7 +81,9 @@
         <label for="psw"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="psw" id="login-password" required>
       </div>
-      <div id="errors"></div>
+
+      <div id="login_errors"></div>
+
       <button type="Login" id="login-form-button" class="login-form-button">Login</button>
       <label>
         <div class="RemMe">
@@ -104,7 +106,7 @@
 <!--Sign Up Modal Section-->
 <div class="signUp hidden">
   <div id="SignUp Modal" class="signUpModal">
-    <form class="modal-content">
+    <form class="modal-content" id="signup_form">
       <span class="signup-close-button">&times;</span>
       <div>
         <label for="email"><b>Email</b></label>
@@ -122,6 +124,13 @@
         <label for="uname"><b>Create a Username</b></label>
         <input type="text" placeholder="Create Username" name="uname" id="sign-up-username" required>
       </div>
+      <div>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" id="sign-up-password" required>
+      </div>
+
+      <div id="signup_errors"></div>
+
       <div class="signUpBtn">
         <button type="Signup" id="signup-form-button" class="signup-form-button">Sign Up</button>
       </div>
@@ -162,7 +171,7 @@
         
         console.log(username, password)
         
-        document.getElementById("errors").textContent = "";  
+        document.getElementById("login_errors").textContent = "";  
 
         fetch("/api/user/login", {
             method: 'POST',
@@ -175,7 +184,43 @@
             }),
         }).then((result) => {
             if (!result.ok) {
-              document.getElementById("errors").textContent = "Error: Unable to login";  
+              document.getElementById("login_errors").textContent = "Error: Unable to login";  
+              return null;
+            } else {
+                return result.json();
+            }
+        }) 
+
+    });
+
+        document.getElementById("signup_form").addEventListener("submit", (event) =>{
+        event.preventDefault();
+
+        const username = document.getElementById("sign-up-username").value;
+        const password = document.getElementById("sign-up-password").value;
+        const firstname = document.getElementById("sign-up-first-name").value;
+        const lastname = document.getElementById("sign-up-last-name").value;
+        const email = document.getElementById("sign-up-email").value;
+        
+        console.log(username, password)
+        
+        document.getElementById("signup_errors").textContent = "";  
+
+        fetch("/api/user/signup", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username,
+                password,
+                firstname,
+                lastname,
+                email,
+            }),
+        }).then((result) => {
+            if (!result.ok) {
+              document.getElementById("signup_errors").textContent = "Error: Unable to create User";  
               return null;
             } else {
                 return result.json();
