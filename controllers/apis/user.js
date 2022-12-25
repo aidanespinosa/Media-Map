@@ -4,15 +4,16 @@ const User = require('../../models/users')
 const usersRouter = new Router();
 
 usersRouter.post("/login", async (req, res) => {
-    const { username, password } = req.body;
-
+    console.log(req.body)
+   // const { username, password } = req.body;
+/*
     const user = await User.findOne({ where: { username } });
 
     if (!user) {
         res.status(401).end('User not found');
         return;
     }
-
+*/
     res.end();
 
 });

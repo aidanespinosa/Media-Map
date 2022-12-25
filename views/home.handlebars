@@ -73,7 +73,7 @@
 <!--Login Modal-->
 <div class="Login-Modal hidden">
   <div id="Login Modal" class="loginModal">
-    <form class="modal-content">
+    <form class="modal-content" id="login_form">
       <span class="login-close-button">&times;</span>
       <label for="uname"><b>Username</b></label>
       <input type="text" placeholder="Enter Username" name="uname" id="login-username" required>
@@ -151,3 +151,34 @@
     </div>
   </div>
 </div>
+
+<script>
+    document.getElementById("login_form").addEventListener("submit", (event) =>{
+        event.preventDefault();
+
+        const username = document.getElementById("login-username").value;
+        const password = document.getElementById("login-password").value;
+        
+        console.log(username, password)
+      //  document.getElementById("errors").textContent = "";  
+        
+        fetch("/api/user/login", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username,
+                password,
+            }),
+        }).then((result) => {
+            if (!result.ok) {
+              document.getElementById("errors").textContent = "Unable to login";  
+              return null;
+            } else {
+                return result.json();
+            }
+        })
+
+    });
+</script>
