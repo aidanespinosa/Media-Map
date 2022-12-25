@@ -81,6 +81,7 @@
         <label for="psw"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="psw" id="login-password" required>
       </div>
+      <div id="errors"></div>
       <button type="Login" id="login-form-button" class="login-form-button">Login</button>
       <label>
         <div class="RemMe">
@@ -161,6 +162,8 @@
         
         console.log(username, password)
         
+        document.getElementById("errors").textContent = "";  
+
         fetch("/api/user/login", {
             method: 'POST',
             headers: {
@@ -172,12 +175,12 @@
             }),
         }).then((result) => {
             if (!result.ok) {
-              window.alert = "Unable to login";  
+              document.getElementById("errors").textContent = "Error: Unable to login";  
               return null;
             } else {
                 return result.json();
             }
-        })
+        }) 
 
     });
 </script>
