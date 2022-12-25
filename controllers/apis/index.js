@@ -1,6 +1,6 @@
 const { Router } = require("express");
 
-const usersRouter = require("./users");
+const usersRouter = require("./user");
 
 const apiRouter = new Router();
 
