@@ -1,6 +1,8 @@
 const { Router } = require("express");
 
-const User = require('../../models/users')
+const jwt = require("jsonwebtoken")
+
+const User = require('../../models/users');
 const usersRouter = new Router();
 
 usersRouter.post("/login", async (req, res) => {
@@ -14,6 +16,13 @@ usersRouter.post("/login", async (req, res) => {
         return;
     }
 
+    if (user.password !== password) {
+        res.status(401).end("Incorrect Password")
+    }
+
+    const token = jwt.sign({id: user.id }, process.env.JWT_KEY)
+
+    res.cookie('logintoken', token, { maxAge: 24 * 60 * 60 * 1000, httpOnly: true});
     res.end();
 
 });

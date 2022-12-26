@@ -185,9 +185,9 @@
         }).then((result) => {
             if (!result.ok) {
               document.getElementById("login_errors").textContent = "Error: Unable to login";  
-              return null;
+
             } else {
-                return result.json();
+                window.location.replace('/Profile')
             }
         }) 
 
