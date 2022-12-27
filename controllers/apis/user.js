@@ -23,6 +23,8 @@ usersRouter.post("/login", async (req, res) => {
     const token = jwt.sign({id: user.id }, process.env.JWT_KEY)
 
     res.cookie('logintoken', token, { maxAge: 24 * 60 * 60 * 1000, httpOnly: true});
+
+
     res.end();
 
 });

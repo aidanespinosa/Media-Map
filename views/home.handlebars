@@ -220,7 +220,7 @@
             }),
         }).then((result) => {
             if (!result.ok) {
-              document.getElementById("signup_errors").textContent = "Error: Unable to create User";  
+              document.getElementById("signup_errors").textContent = "Error: Username is already taken";  
               return null;
             } else {
                 return result.json();
