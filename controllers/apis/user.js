@@ -49,7 +49,6 @@ usersRouter.post("/signup", async (req, res) => {
     })
 
     res.status(200).json(newUserObject);
-
 });
 
 module.exports = usersRouter;
