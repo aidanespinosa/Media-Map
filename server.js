@@ -1,10 +1,10 @@
-//require("dotenv").config();
+require("dotenv").config();
 
 const express = require("express");
 
 const { engine } = require('express-handlebars');
 
-//const sequelize = require("./config/connection");
+const sequelize = require("./config/connection");
 
 const mainRouter = require("./controllers");
 
@@ -20,18 +20,18 @@ app.use(express.json());
 app.use(mainRouter);
 app.use(express.static('public'));
 
-// sequelize
-//   .authenticate()
-//   .then(() => {
-//     console.log('Connection has been established successfully.');
-//   })
-//   .catch((err) => {
-//     console.error('Unable to connect to the database:', err);
-//   });
 
-//sequelize.sync().then(() => {
 
-    app.listen(PORT, () => {
-        console.log("Listening on http://localhost:" + PORT);
+sequelize
+    .authenticate()
+    .then(() => {
+        console.log('Connection has been established successfully.');
+    })
+    .catch(err => {
+        console.error('Unable to connect to the database:', err);
     });
-//});
+
+app.listen(PORT, () => {
+    console.log("Listening on http://localhost:" + PORT);
+});
+
