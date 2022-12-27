@@ -69,6 +69,9 @@ let results = {
         let description = data.overview;/*description*/
         let reviews = data.vote_average;/*reviews*/
         console.log(data);
+        console.log(name)
+        console.log(description)
+        console.log(reviews)
         document.body.style.backgroundImage = "url(\"https://source.unsplash.com/1600x900/?movie&query=" + name + ")";
     },
 
