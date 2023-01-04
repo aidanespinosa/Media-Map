@@ -22,7 +22,7 @@
 <!--Login Modal-->
 <div class="Login-Modal hidden">
   <div id="Login Modal" class="loginModal">
-    <form class="modal-content">
+    <form class="modal-content" id="login_form">
       <span class="login-close-button">&times;</span>
       <label for="uname"><b>Username</b></label>
       <input type="text" placeholder="Enter Username" name="uname" id="login-username" required>
@@ -30,6 +30,9 @@
         <label for="psw"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="psw" id="login-password" required>
       </div>
+
+      <div id="login_errors"></div>
+
       <button type="Login" id="login-form-button" class="login-form-button">Login</button>
       <label>
         <div class="RemMe">
@@ -52,7 +55,7 @@
 <!--Sign Up Modal Section-->
 <div class="signUp hidden">
   <div id="SignUp Modal" class="signUpModal">
-    <form class="modal-content">
+    <form class="modal-content" id="signup_form">
       <span class="signup-close-button">&times;</span>
       <div>
         <label for="email"><b>Email</b></label>
@@ -70,6 +73,13 @@
         <label for="uname"><b>Create a Username</b></label>
         <input type="text" placeholder="Create Username" name="uname" id="sign-up-username" required>
       </div>
+      <div>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" id="sign-up-password" required>
+      </div>
+
+      <div id="signup_errors"></div>
+
       <div class="signUpBtn">
         <button type="Signup" id="signup-form-button" class="signup-form-button">Sign Up</button>
       </div>
