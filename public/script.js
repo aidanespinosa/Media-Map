@@ -98,6 +98,7 @@ document.querySelector(".searchBar").addEventListener("keyup", function (event) 
     if (event.key == "Enter") {
         results.search();
     }
+<<<<<<< Updated upstream
 })
 
 const loginFormButton = document.getElementById("login-form-button");
@@ -107,3 +108,6 @@ loginPage.addEventListener("click",()=>{
 
 })
 
+=======
+});
+>>>>>>> Stashed changes
