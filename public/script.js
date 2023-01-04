@@ -57,7 +57,7 @@ function toggleSignupModal() {
     signUpModal.classList.add("hidden");
 }
 
-let results = {
+/* let results = {
     fetchMovie: function (movie) {
         fetch("https://api.themoviedb.org/3/search/movie?api_key=" + apiKey + "&language=en-US&page=1&include_adult=false&query=" + movie)
             .then((response) => response.json()).then((data) => this.displayResults(data));
@@ -67,13 +67,13 @@ let results = {
         data = data.results[0];
         let name = data.original_title;
         let description = data.overview;/*description*/
-        let reviews = data.vote_average;/*reviews*/
-        console.log(data);
-        console.log(name)
-        console.log(description)
-        console.log(reviews)
-        document.body.style.backgroundImage = "url(\"https://source.unsplash.com/1600x900/?movie&query=" + name + ")";
-    },
+    //    let reviews = data.vote_average;/*reviews*/
+    //    console.log(data);
+    //    console.log(name)
+    //    console.log(description)
+    //    console.log(reviews)
+    //    document.body.style.backgroundImage = "url(\"https://source.unsplash.com/1600x900/?movie&query=" + name + ")";
+    //},
 
     /*fetchResults: function (movie) {
         fetch("https://api.themoviedb.org/3/search/" + movie + "?" + apiKey + "&language=en-US&page=1&include_adult=false").then((response) => response.json()).then((data) => displayFeatures(data));
@@ -87,11 +87,11 @@ let results = {
         }
     },*/
     
-    search: function () {
-        this.fetchMovie(document.querySelector(".searchBar").value);
-        resultsModal.classList.remove("hidden");
-    },
-};
+//    search: function () {
+//        this.fetchMovie(document.querySelector(".searchBar").value);
+//        resultsModal.classList.remove("hidden");
+//    },
+//}; 
 
 document.querySelector(".mainBtn").addEventListener("click", function () {
     results.search();
@@ -101,4 +101,4 @@ document.querySelector(".searchBar").addEventListener("keyup", function (event) 
     if (event.key == "Enter") {
         results.search();
     }
-})
+}) 
