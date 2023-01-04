@@ -1,1 +1,32 @@
-Profile for {{user.username}}
+<div>
+    Profile for {{user.username}}
+    <container class="search">
+        <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie or Show">
+        <button type="button" class="mainBtn" id="searchInput">Search</button>
+    </container>
+
+</div>
+
+
+
+<script>
+
+    document.getElementById("searchInput").addEventListener("click", () => {
+        const queryText = document.getElementById("searchBar").value;
+
+        fetch("/search?searchQuery=" + queryText).then((result) => {
+            return result.json();
+        }).then((data) => {
+            //console logs the data from the search
+            console.log(data);
+
+            //console logs the results  
+            console.log(data.results)
+
+            //Gets the individual titles, release date, ratings, and overview for the movies, can pull out the information from the array here
+            for (result of data.results) {
+                console.log((`Movie: ${result.title}\n  \nReleased in: ${result.release_date}\n  \nAverage Rating: ${result.vote_average}\n  \nOverview: ${result.overview}`))
+            }
+        });
+    });
+</script>
