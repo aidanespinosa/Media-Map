@@ -54,6 +54,14 @@
                 poster.classList.add('card-image');
                 card.appendChild(poster);
 
+                const favoriteButton = document.createElement('button');
+                favoriteButton.classList.add('favorite-button');
+                card.appendChild(favoriteButton);
+                const favoriteData = result;
+                favoriteButton.addEventListener('click',(event)=>{
+                    storeFavorite(favoriteButton, favoriteData,);
+                })
+
                 const info = document.createElement('div');
                 info.classList.add('card-info');
                 card.appendChild(info);
@@ -115,6 +123,13 @@
 
 
     });
+
+    function storeFavorite (favoriteButton, movieResult){
+        console.log(favoriteButton, movieResult);
+        //add API fetch
+        //update UI
+        
+    }
 </script>
 
 <script>
