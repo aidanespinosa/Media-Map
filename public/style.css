@@ -5,11 +5,12 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     background: #222;
     background-image: url("https://source.unsplash.com/1600x900/?movie");
     background-repeat: no-repeat;
     background-size: cover;
+
 }
 
 @media screen and (max-width: 700px) {
@@ -260,27 +261,27 @@ body {
     height: 100%;
     transform: scale(1.1);
     transition: visibility 0s linear 0s, opacity 0s 0s, transform 0s;
-  }
-  
-  .hidden {
+}
+
+.hidden {
     visibility: hidden;
-  }
-  
-  .ForgotPsw {
+}
+
+.ForgotPsw {
     text-align: center;
     font-size: large;
-  }
-  
-  .RemMe {
+}
+
+.RemMe {
     text-align: center;
-  }
-  
-  .input {
+}
+
+.input {
     position: flex;
-  }
-  
-  /*Sign Up Modal Pop-Over Section*/
-  .signUp {
+}
+
+/*Sign Up Modal Pop-Over Section*/
+.signUp {
     position: fixed;
     left: 0;
     top: 0;
@@ -290,21 +291,21 @@ body {
     flex-direction: column;
     transform: scale(1.1);
     transition: visibility 0s linear 0s, opacity 0s 0s, transform 0s;
-  }
-  
-  .NoAccount {
-    text-align: center;
-  }
-  
-  .invalid {
-    font-size: medium;
-  }
-  
-  .signUpBtn {
-    text-align: center;
-  }
+}
 
-  .login-form-button {
+.NoAccount {
+    text-align: center;
+}
+
+.invalid {
+    font-size: medium;
+}
+
+.signUpBtn {
+    text-align: center;
+}
+
+.login-form-button {
     color: rgb(255, 255, 255);
     font-size: 18px;
     line-height: 18px;
@@ -369,4 +370,21 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
     transform: scale(1.1);
     transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.search-title {
+    font-family: 'Georgia, serif';
+
+}
+
+#search-results {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-image {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+
 }

@@ -1,10 +1,20 @@
-<div>
-    Profile for {{user.username}}
-    <container class="search">
-        <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie or Show">
-        <button type="button" class="mainBtn" id="searchInput">Search</button>
-    </container>
+<div id="main-card">
+    <div id="profile-header">
+        <h2>Profile for {{user.username}} </h2>
+    </div>
+    <div id="search-section">
+        <div id="search-button">
+            <container class="search">
+                <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie or Show">
+                <button type="button" class="mainBtn" id="searchInput">Search</button>
+            </container>
+        </div>
+        <div id="search-results">
 
+        </div>
+
+
+    </div>
 </div>
 
 
@@ -21,10 +31,51 @@
             console.log(data);
 
             //console logs the results  
-            console.log(data.results)
+            console.log(data.results);
 
             //Gets the individual titles, release date, ratings, and overview for the movies, can pull out the information from the array here
             for (result of data.results) {
+                const card = document.createElement('div');
+                const searchResults = document.getElementById("search-results");
+                card.classList.add('card');
+                searchResults.appendChild(card);
+
+                const poster = document.createElement('img');
+                poster.src = "https://image.tmdb.org/t/p/original/" + result.poster_path;
+                poster.alt = result.title;
+                poster.classList.add('card-image');
+                card.appendChild(poster);
+
+                const info = document.createElement('div');
+                info.classList.add('card-info');
+                card.appendChild(info);
+
+                // poster, title, rating, releaseDate, overview
+
+
+
+                const title = document.createElement('h3');
+                title.classList.add('card-title');
+                title.textContent = result.title;
+                info.appendChild(title);
+
+
+                const rating = document.createElement('div');
+                rating.classList.add('card-rating');
+                rating.textContent = `Rating: ${result.vote_average}`;
+                info.appendChild(rating);
+
+                const releaseDate = document.createElement('div');
+                releaseDate.classList.add('release-date');
+                releaseDate.textContent = `Released On: ${result.release_date}`;
+                info.appendChild(releaseDate);
+
+                const overview = document.createElement('div');
+                overview.classList.add('overview');
+                overview.textContent = result.overview;
+                info.appendChild(overview);
+
+
                 console.log((`Movie: ${result.title}\n  \nReleased in: ${result.release_date}\n  \nAverage Rating: ${result.vote_average}\n  \nOverview: ${result.overview}`))
             }
         });
