@@ -1,9 +1,8 @@
 const { Router } = require("express");
-const { Movie, User, Save } = require("../../models");
+const { User } = require("../../models");
 
 const jwt = require("jsonwebtoken");
 
-const { User } = require("../../models");
 const usersRouter = new Router();
 
 usersRouter.post("/login", async (req, res) => {
@@ -51,19 +50,19 @@ usersRouter.post("/signup", async (req, res) => {
   res.status(200).json(newUserObject);
 });
 
-usersRouter.get("/:id", async (req, res) => {
-  try {
-    const movieData = await Movie.findByPk(req.params.id, {
-      include: [{ model: User, through: Save, as: "movie" }],
-    });
-    if (!movieData) {
-      res.status(404).json({ message: "No movie found with this id!" });
-      return;
-    }
+// usersRouter.get("/:id", async (req, res) => {
+//   try {
+//     const movieData = await Movie.findByPk(req.params.id, {
+//       include: [{ model: User, through: Save, as: "movie" }],
+//     });
+//     if (!movieData) {
+//       res.status(404).json({ message: "No movie found with this id!" });
+//       return;
+//     }
 
-    res.status(200).json(movieData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     res.status(200).json(movieData);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 module.exports = usersRouter;

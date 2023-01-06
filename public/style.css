@@ -389,3 +389,44 @@ body {
     max-width: 200px;
 
 }
+
+
+
+.favorite-button {
+    position: relative;
+    width: 100px;
+    height: 90px;
+    margin-top: 10px;
+    background: none;
+    border: none;
+    float: right;
+  }
+  
+  .favorite-button::before, .favorite-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 52px;
+    height: 80px;
+    border-radius: 50px 50px 0 0;
+    background: var(--favorite-color,white);
+    
+  }
+  
+  .favorite-button::before {
+    left: 50px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+  }
+  
+  .favorite-button::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+  }
+  
+  .favorite-button:hover::before, .favorite-button:hover::after {
+   
+    background: rgb(228, 29, 29);
+    
+  }
