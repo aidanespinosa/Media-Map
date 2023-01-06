@@ -63,12 +63,12 @@ SOFTWARE.
 
 ## Features
 
--Search for movies or TV Shows
--Get search results, as well as average user rating and a plot summary
--Creat an account
--Log in or Log out of your account
--While logged in, save movies to your "favorites" selection
--Get shown suggested movies you may like based on your favorites
+- Search for movies or TV Shows
+- Get search results, as well as average user rating and a plot summary
+- Creat an account
+- Log in or Log out of your account
+- While logged in, save movies to your "favorites" selection
+- Get shown suggested movies you may like based on your favorites
 
 ## How to Contribute
 
