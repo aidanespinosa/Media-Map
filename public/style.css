@@ -5,9 +5,9 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0;
-    height: 100vh;
+    height: 100%;
     background: #222;
-    background-image: url("https://source.unsplash.com/1600x900/?movie");
+    background-image: url("https://source.unsplash.com/1600x900/?movies");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -42,8 +42,16 @@ body {
     color: rgb(165, 6, 6);
 }
 
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .search {
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .searchBar {
@@ -54,7 +62,7 @@ body {
     border-radius: 9px;
     border: none;
     height: 2em;
-    width: 15em;
+    width: 20em;
     background: #c4c3c3a7;
     color: aliceblue;
 }
@@ -116,6 +124,10 @@ body {
     background: linear-gradient(to right, #1C6EA4 0%, #2388CB 65%, #144E75 100%);
 }
 
+.recommendation {
+    color: rgb(165, 6, 6);
+}
+
 .close-button {
     float: right;
     width: 1.5rem;
@@ -161,6 +173,25 @@ body {
     cursor: pointer;
 }
 
+.results-close-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: lightgray;
+}
+
+.results-close-button:hover {
+    background-color: darkgray;
+    cursor: pointer;
+}
+
+.visibility {
+    display: none;
+}
+
 .show-modal {
     opacity: 1;
     visibility: visible;
@@ -184,6 +215,7 @@ body {
     box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
     border: 2px solid rgb(28, 110, 164);
     display: inline-block;
+    margin-bottom: 20px;
 }
 
 .trigger:hover {
@@ -361,12 +393,27 @@ body {
 }
 
 .resultsModal {
-    position: fixed;
-    left: 0;
-    top: 0;
+    position: center;
+    background-color: rgb(84, 85, 85, .8);
+    padding: 2em;
+    border-radius: 30px;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    transform: scale(1.1);
-    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+    max-width: 61%;
+    max-height: auto;
+    margin: 1em;
+    color: aliceblue;
+}
+
+.description {
+    display:flex;
+    color: #000;
+    border: 1px solid #272727;
+    background-color: #c4c3c3a7;
+    overflow: auto;
+    padding: 1em!important;
+    overflow-y: hidden;
+}
+
+.results-modal-content {
+    display: inline-block;
 }
