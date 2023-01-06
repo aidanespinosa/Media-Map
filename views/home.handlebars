@@ -70,6 +70,8 @@
   </div>
 </div> --}}
 
+
+
 <!--Login Modal-->
 <div class="Login-Modal hidden">
   <div id="Login Modal" class="loginModal">
@@ -162,90 +164,113 @@
   </div>
 </div>
 
+
+<div class="card">
+  <div>
+    <h2 class="search-title">Search for a movie or show to see where to stream it!</h2>
+    <container class="search">
+      <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie or Show">
+      <button type="button" class="mainBtn" id="searchInput">Search</button>
+    </container>
+  </div>
+  <div id="results-container" style="display: none";>
+    <div id="result-card-1">
+      <h3 id="movie-title">Movie Title</h3>
+      <p id="movie-description"></p>
+    </div>
+
+  </div>
+</div>
+
 <script>
-   src="/script.js">
-    document.getElementById("login_form").addEventListener("submit", (event) =>{
-        event.preventDefault();
+  src = "/script.js" >
+    document.getElementById("login_form").addEventListener("submit", (event) => {
+      event.preventDefault();
 
-        const username = document.getElementById("login-username").value;
-        const password = document.getElementById("login-password").value;
-        
-        console.log(username, password)
-        
-        document.getElementById("login_errors").textContent = "";  
+      const username = document.getElementById("login-username").value;
+      const password = document.getElementById("login-password").value;
 
-        fetch("/api/user/login", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                username,
-                password,
-            }),
-        }).then((result) => {
-            if (!result.ok) {
-              document.getElementById("login_errors").textContent = "Error: Unable to login";  
+      console.log(username, password)
 
-            } else {
-                window.location.replace('/Profile')
-            }
-        }) 
+      document.getElementById("login_errors").textContent = "";
 
-    });
+      fetch("/api/user/login", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username,
+          password,
+        }),
+      }).then((result) => {
+        if (!result.ok) {
+          document.getElementById("login_errors").textContent = "Error: Unable to login";
 
-        document.getElementById("signup_form").addEventListener("submit", (event) =>{
-        event.preventDefault();
-
-        const username = document.getElementById("sign-up-username").value;
-        const password = document.getElementById("sign-up-password").value;
-        const firstname = document.getElementById("sign-up-first-name").value;
-        const lastname = document.getElementById("sign-up-last-name").value;
-        const email = document.getElementById("sign-up-email").value;
-        
-        console.log(username, password)
-        
-        document.getElementById("signup_errors").textContent = "";  
-
-        fetch("/api/user/signup", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                username,
-                password,
-                firstname,
-                lastname,
-                email,
-            }),
-        }).then((result) => {
-            if (!result.ok) {
-              document.getElementById("signup_errors").textContent = "Error: Username is already taken";  
-              return null;
-            } else {
-                window.location.replace('/');
-            }
-        }) 
+        } else {
+          window.location.replace('/Profile')
+        }
+      })
 
     });
 
-            document.getElementById("searchInput").addEventListener("click", () => {
-            const queryText = document.getElementById("searchBar").value;
+  document.getElementById("signup_form").addEventListener("submit", (event) => {
+    event.preventDefault();
 
-            fetch("/search?searchQuery=" + queryText).then((result) => {
-                return result.json();
-            }).then((data) => {
-              //console logs the data from the search
-                console.log(data);
+    const username = document.getElementById("sign-up-username").value;
+    const password = document.getElementById("sign-up-password").value;
+    const firstname = document.getElementById("sign-up-first-name").value;
+    const lastname = document.getElementById("sign-up-last-name").value;
+    const email = document.getElementById("sign-up-email").value;
 
-              //console logs the results  
-                console.log(data.results)
+    console.log(username, password)
 
-              //Gets the individual titles, release date, ratings, and overview for the movies, can pull out the information from the array here
-                for (result of data.results){
-                  console.log((`Movie: ${result.title}\n  \nReleased in: ${result.release_date}\n  \nAverage Rating: ${result.vote_average}\n  \nOverview: ${result.overview}` ))
-                }
-            });
-        });
+    document.getElementById("signup_errors").textContent = "";
+
+    fetch("/api/user/signup", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username,
+        password,
+        firstname,
+        lastname,
+        email,
+      }),
+    }).then((result) => {
+      if (!result.ok) {
+        document.getElementById("signup_errors").textContent = "Error: Username is already taken";
+        return null;
+      } else {
+        window.location.replace('/');
+      }
+    })
+
+  });
+
+  document.getElementById("searchInput").addEventListener("click", () => {
+    const queryText = document.getElementById("searchBar").value;
+    const movieDescription = document.getElementById("movie-description");
+    document.getElementById("results-container").style.display = 'block';
+  
+
+    fetch("/search?searchQuery=" + queryText).then((result) => {
+      return result.json();
+    }).then((data) => {
+      //console logs the data from the search
+      console.log(data);
+
+      //console logs the results  
+      console.log(data.results)
+
+      //Gets the individual titles, release date, ratings, and overview for the movies, can pull out the information from the array here
+      for (result of data.results) {
+        movieDescription.innerHTML = `Movie: ${result.title}\n  \nReleased in: ${result.release_date}\n  \nAverage Rating: ${result.vote_average}\n  \nOverview: ${result.overview}`;
+        console.log((`Movie: ${result.title}\n  \nReleased in: ${result.release_date}\n  \nAverage Rating: ${result.vote_average}\n  \nOverview: ${result.overview}`));
+
+      }
+    });
+  });
 </script>
