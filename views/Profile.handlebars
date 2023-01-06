@@ -9,6 +9,9 @@
                 <button type="button" class="mainBtn" id="searchInput">Search</button>
             </container>
         </div>
+        <div>
+            <button type="button" class="mainBtn" id="logoutButton">Logout</button>
+        </div>
         <div id="search-results">
 
         </div>
@@ -112,4 +115,12 @@
 
 
     });
+</script>
+
+<script>
+    document.getElementById("logoutButton").addEventListener("click", () => {
+        event.preventDefault();
+        console.log("clicking")
+        window.location.replace('/')
+    })
 </script>
