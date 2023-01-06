@@ -292,27 +292,27 @@ body {
     height: 100%;
     transform: scale(1.1);
     transition: visibility 0s linear 0s, opacity 0s 0s, transform 0s;
-  }
-  
-  .hidden {
+}
+
+.hidden {
     visibility: hidden;
-  }
-  
-  .ForgotPsw {
+}
+
+.ForgotPsw {
     text-align: center;
     font-size: large;
-  }
-  
-  .RemMe {
+}
+
+.RemMe {
     text-align: center;
-  }
-  
-  .input {
+}
+
+.input {
     position: flex;
-  }
-  
-  /*Sign Up Modal Pop-Over Section*/
-  .signUp {
+}
+
+/*Sign Up Modal Pop-Over Section*/
+.signUp {
     position: fixed;
     left: 0;
     top: 0;
@@ -322,21 +322,21 @@ body {
     flex-direction: column;
     transform: scale(1.1);
     transition: visibility 0s linear 0s, opacity 0s 0s, transform 0s;
-  }
-  
-  .NoAccount {
-    text-align: center;
-  }
-  
-  .invalid {
-    font-size: medium;
-  }
-  
-  .signUpBtn {
-    text-align: center;
-  }
+}
 
-  .login-form-button {
+.NoAccount {
+    text-align: center;
+}
+
+.invalid {
+    font-size: medium;
+}
+
+.signUpBtn {
+    text-align: center;
+}
+
+.login-form-button {
     color: rgb(255, 255, 255);
     font-size: 18px;
     line-height: 18px;
@@ -405,12 +405,12 @@ body {
 }
 
 .description {
-    display:flex;
+    display: flex;
     color: #000;
     border: 1px solid #272727;
     background-color: #c4c3c3a7;
     overflow: auto;
-    padding: 1em!important;
+    padding: 1em !important;
     overflow-y: hidden;
 }
 

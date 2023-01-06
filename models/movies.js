@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 
-class Movie extends Model {}
+class Movie extends Model { }
 const sequelize = require("../config/connection");
 
 Movie.init(

@@ -6,7 +6,7 @@ const User = require('../../models/users');
 const usersRouter = new Router();
 
 usersRouter.post("/login", async (req, res) => {
-    
+
     const { username, password } = req.body;
 
     const user = await User.findOne({ where: { username } });
@@ -20,9 +20,9 @@ usersRouter.post("/login", async (req, res) => {
         res.status(401).end("Incorrect Password")
     }
 
-    const token = jwt.sign({id: user.id }, process.env.JWT_KEY)
+    const token = jwt.sign({ id: user.id }, process.env.JWT_KEY)
 
-    res.cookie('logintoken', token, { maxAge: 24 * 60 * 60 * 1000, httpOnly: true});
+    res.cookie('logintoken', token, { maxAge: 24 * 60 * 60 * 1000, httpOnly: true });
 
 
     res.end();

@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 
-class User extends Model {}
+class User extends Model { }
 const sequelize = require("../config/connection");
 
 User.init(
@@ -14,11 +14,11 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    firstname:{
+    firstname: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    lastname:{
+    lastname: {
       type: DataTypes.STRING,
       allowNull: false,
     },

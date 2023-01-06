@@ -90,13 +90,14 @@ let results = {
         const result = await fetch("https://api.themoviedb.org/3/movie/" + provider + "/watch/providers?api_key=" + apiKey);
         let source = await result.json();
         //let providers = source.results.flatrate[0].provider_name;
-        const providerMap ={};
+        const providerMap = {};
         Object.keys(source.results).forEach((key) => {
             const data = source.results[key];
             if (data.flatrate) {
                 for (const rate of data.flatrate) {
                     providerMap[rate.provider_id] = rate.provider_name;
-            }}
+                }
+            }
         })
         const providers = Object.values(providerMap).join(", ");
         document.querySelector(".providers").innerText = "You can stream this on: " + providers;
@@ -123,7 +124,7 @@ let results = {
         let searchBar = document.querySelector(".searchBar").value;
         if (searchBar.length == 0) {
             return;
-          }
+        }
         this.fetchMovie(searchBar);
         resultsModal.classList.remove("hidden");
         homeCard.classList.add("visibility");

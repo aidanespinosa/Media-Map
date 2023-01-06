@@ -6,7 +6,7 @@ const axios = require('axios');
 
 const sequelize = require('./config/connection')
 
-const mainRouter = require ("./controllers")
+const mainRouter = require("./controllers")
 
 const app = express();
 
@@ -30,7 +30,7 @@ app.get("/search", async (req, res) => {
 });
 
 sequelize.sync({ force: false }).then(() => {
-app.listen(PORT, () =>{
-    console.log("Listening on http://localhost:" + PORT);
+    app.listen(PORT, () => {
+        console.log("Listening on http://localhost:" + PORT);
     });
 });
