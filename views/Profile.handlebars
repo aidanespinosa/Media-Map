@@ -34,7 +34,7 @@
             console.log(data.results);
 
             //Gets the individual titles, release date, ratings, and overview for the movies, can pull out the information from the array here
-            for (result of data.results) {
+            for (result of data.results.slice(0, 5)) {
                 const card = document.createElement('div');
                 const searchResults = document.getElementById("search-results");
                 card.classList.add('card');
@@ -78,6 +78,26 @@
 
                 console.log((`Movie: ${result.title}\n  \nReleased in: ${result.release_date}\n  \nAverage Rating: ${result.vote_average}\n  \nOverview: ${result.overview}`))
             }
-        });
+            return fetch(`https://api.themoviedb.org/3/movie/" + ${result.id} + "/watch/providers?`);
+        })
+        .then(result => {
+            return result.json();
+        })
+            .then((source) => {
+                console.log(data.results);
+                const providerMap = {};
+                Object.keys(source.results).forEach((key) => {
+                    const data = source.results[key];
+                    if (data.flatrate) {
+                        for (const rate of data.flatrate) {
+                            providerMap[rate.provider_id] = rate.provider_name;
+                        }
+                    }
+                })
+                const providers = Object.values(providerMap).join(", ");
+                document.querySelector(".providers").innerText = "You can stream this on: " + providers;
+
+            })
+
     });
 </script>

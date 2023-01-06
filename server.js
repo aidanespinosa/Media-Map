@@ -29,6 +29,7 @@ app.get("/search", async (req, res) => {
     res.json(result.data);
 });
 
+
 sequelize.sync({ force: false }).then(() => {
 app.listen(PORT, () =>{
     console.log("Listening on http://localhost:" + PORT);
