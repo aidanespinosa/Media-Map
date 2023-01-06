@@ -81,7 +81,7 @@ let results = {
         let name = data.original_title;
         let description = data.overview;
         let reviews = data.vote_average;
-        let title = data.title;
+        //let title = data.title;
         document.querySelector(".title").innerText = name;
         document.querySelector(".description").innerText = "Movie Summary: " + description;
         document.querySelector(".review").innerText = "Viewer Score: " + reviews;
@@ -98,8 +98,6 @@ let results = {
                     providerMap[rate.provider_id] = rate.provider_name;
             }}
         })
-        //console.log(data);
-        //console.log(providerMap);
         const providers = Object.values(providerMap).join(", ");
         document.querySelector(".providers").innerText = "You can stream this on: " + providers;
     },
