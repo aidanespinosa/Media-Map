@@ -22,6 +22,10 @@
 <script>
 
     document.getElementById("searchInput").addEventListener("click", () => {
+        clearcontent();
+        function clearcontent() {
+            document.getElementById("search-results").innerHTML = "";
+        }
         const queryText = document.getElementById("searchBar").value;
 
         fetch("/search?searchQuery=" + queryText).then((result) => {
@@ -34,6 +38,7 @@
             console.log(data.results);
 
             //Gets the individual titles, release date, ratings, and overview for the movies, can pull out the information from the array here
+
             for (result of data.results.slice(0, 5)) {
                 const card = document.createElement('div');
                 const searchResults = document.getElementById("search-results");
