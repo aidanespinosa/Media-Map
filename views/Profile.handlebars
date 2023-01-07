@@ -1,10 +1,23 @@
-<div>
-    Profile for {{user.username}}
-    <container class="search">
-        <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie or Show">
-        <button type="button" class="mainBtn" id="searchInput">Search</button>
-    </container>
+<div id="main-card">
+    <div id="profile-header">
+        <h2>Profile for {{user.username}} </h2>
+    </div>
+    <div id="search-section">
+        <div id="search-button">
+            <container class="search">
+                <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie or Show">
+                <button type="button" class="mainBtn" id="searchInput">Search</button>
+            </container>
+        </div>
+        <div>
+            <button type="button" class="mainBtn" id="logoutButton">Logout</button>
+        </div>
+        <div id="search-results">
 
+        </div>
+
+
+    </div>
 </div>
 
 
@@ -12,6 +25,10 @@
 <script>
 
     document.getElementById("searchInput").addEventListener("click", () => {
+        clearcontent();
+        function clearcontent() {
+            document.getElementById("search-results").innerHTML = "";
+        }
         const queryText = document.getElementById("searchBar").value;
 
         fetch("/search?searchQuery=" + queryText).then((result) => {
@@ -21,12 +38,105 @@
             console.log(data);
 
             //console logs the results  
-            console.log(data.results)
+            console.log(data.results);
 
             //Gets the individual titles, release date, ratings, and overview for the movies, can pull out the information from the array here
-            for (result of data.results) {
-                console.log((`Movie: ${result.title}\n  \nReleased in: ${result.release_date}\n  \nAverage Rating: ${result.vote_average}\n  \nOverview: ${result.overview}`))
+
+            for (result of data.results.slice(0, 5)) {
+                const card = document.createElement('div');
+                const searchResults = document.getElementById("search-results");
+                card.classList.add('card');
+                searchResults.appendChild(card);
+
+                const poster = document.createElement('img');
+                poster.src = "https://image.tmdb.org/t/p/original/" + result.poster_path;
+                poster.alt = result.title;
+                poster.classList.add('card-image');
+                card.appendChild(poster);
+
+                const favoriteButton = document.createElement('button');
+                favoriteButton.classList.add('favorite-button');
+                card.appendChild(favoriteButton);
+                const favoriteData = result;
+                favoriteButton.addEventListener('click',(event)=>{
+                    storeFavorite(favoriteButton, favoriteData,);
+                })
+
+                const info = document.createElement('div');
+                info.classList.add('card-info');
+                card.appendChild(info);
+
+                // poster, title, rating, releaseDate, overview
+
+
+
+                const title = document.createElement('h3');
+                title.classList.add('card-title');
+                title.textContent = result.title;
+                info.appendChild(title);
+
+
+                const rating = document.createElement('div');
+                rating.classList.add('card-rating');
+                rating.textContent = `Rating: ${result.vote_average}`;
+                info.appendChild(rating);
+
+                const releaseDate = document.createElement('div');
+                releaseDate.classList.add('release-date');
+                releaseDate.textContent = `Released On: ${result.release_date}`;
+                info.appendChild(releaseDate);
+
+                const overview = document.createElement('div');
+                overview.classList.add('overview');
+                overview.textContent = result.overview;
+                info.appendChild(overview);
+
+
+                console.log((`Movie: ${result.title}\n  \nReleased in: ${result.release_date}\n  \nAverage Rating: ${result.vote_average}\n ID: ${result.id} \nOverview: ${result.overview}`))
+
+                fetch(`https://api.themoviedb.org/3/movie/  ${result.id}  /watch/providers?api_key=a299fbe5ab099ad1c542674fd239f25d`)
+                    .then(result => {
+                        return result.json();
+                    })
+                    .then((source) => {
+                        const providerMap = {};
+                        Object.keys(source.results).forEach((key) => {
+                            const data = source.results[key];
+                            if (data.flatrate) {
+                                for (const rate of data.flatrate) {
+                                    providerMap[rate.provider_id] = rate.provider_name;
+                                }
+                            }
+                        })
+                        const providers = Object.values(providerMap).join(", ");
+                        const streamingPlatform = document.createElement('div');
+                        streamingPlatform.classList.add('streaming-platform');
+                        streamingPlatform.textContent = "You can stream this on: " + providers;
+                        console.log(providers);
+                        info.appendChild(streamingPlatform);
+
+
+                    })
             }
-        });
+        })
+
+
+
     });
+
+    function storeFavorite (favoriteButton, movieResult){
+        console.log(favoriteButton, movieResult);
+        favoriteButton.style.setProperty("--favorite-color", "red");
+        //add API fetch
+        //update UI
+        
+    }
+</script>
+
+<script>
+    document.getElementById("logoutButton").addEventListener("click", () => {
+        event.preventDefault();
+        console.log("clicking")
+        window.location.replace('/')
+    })
 </script>
