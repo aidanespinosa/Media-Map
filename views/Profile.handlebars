@@ -9,6 +9,9 @@
                 <button type="button" class="mainBtn" id="searchInput">Search</button>
             </container>
         </div>
+
+        <div id="save_movie_errors"></div>
+
         <div>
             <button type="button" class="mainBtn" id="logoutButton">Logout</button>
         </div>
@@ -129,7 +132,36 @@
         favoriteButton.style.setProperty("--favorite-color", "red");
         //add API fetch
         //update UI
-        
+    const title = result.title;
+    const poster = result.poster_path;
+    const rating = result.vote_average;
+    const releaseDate = result.release_date;
+    const overview = result.overview;
+
+          console.log(title, poster, rating, releaseDate, overview)
+
+    document.getElementById("save_movie_errors").textContent = "";
+
+    fetch("/api/movie/", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title,
+        poster,
+        rating,
+        releaseDate,
+        overview,
+      }),
+    }).then((result) => {
+      if (!result.ok) {
+        document.getElementById("save_movie_errors").textContent = "Error: Could not save movie :(";
+        return null;
+      } else {
+         document.getElementById("save_movie_errors").textContent = "Error: Movie added to favorites!!";
+      }
+    })
     }
 </script>
 

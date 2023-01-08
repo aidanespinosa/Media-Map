@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
+const validator = require('validator');
 
 class User extends Model {}
 const sequelize = require("../config/connection");
@@ -7,6 +8,7 @@ User.init(
   {
     id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       autoIncrement: true,
       primaryKey: true,
     },

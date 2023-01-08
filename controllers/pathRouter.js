@@ -19,6 +19,10 @@ pathRouter.get("/Profile", async (req, res) => {
     const { id } = data;
 
     const user = await User.findByPk(id);
+    if (!user){
+      res.redirect('/login')
+      return;
+    }
     const plainUser = user.get({ plain: true });
 
     res.render("Profile", {
