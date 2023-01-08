@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const jwt = require("jsonwebtoken");
 
-const { User } = require("../models");
+const { User,Save,Movie } = require("../models");
 
 const pathRouter = new Router();
 
@@ -18,11 +18,14 @@ pathRouter.get("/Profile", async (req, res) => {
 
     const { id } = data;
 
-    const user = await User.findByPk(id);
+    const user = await User.findOne({where:{id},include: Movie});
     const plainUser = user.get({ plain: true });
+    console.log("user now",user);
 
     res.render("Profile", {
       user: plainUser,
+      movies: user.movies
+      //saves
     });
   } catch (error) {
     if (

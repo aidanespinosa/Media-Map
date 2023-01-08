@@ -18,6 +18,14 @@
 
 
     </div>
+    <div class = "favorites-card">
+        <h2> Favorited Movies</h2>
+        <p>{{movie.title}}
+            {{movie.rating}}
+        </p>
+
+    </div>
+    
 </div>
 
 
@@ -58,7 +66,7 @@
                 favoriteButton.classList.add('favorite-button');
                 card.appendChild(favoriteButton);
                 const favoriteData = result;
-                favoriteButton.addEventListener('click',(event)=>{
+                favoriteButton.addEventListener('click', (event) => {
                     storeFavorite(favoriteButton, favoriteData,);
                 })
 
@@ -94,7 +102,7 @@
 
                 console.log((`Movie: ${result.title}\n  \nReleased in: ${result.release_date}\n  \nAverage Rating: ${result.vote_average}\n ID: ${result.id} \nOverview: ${result.overview}`))
 
-                fetch(`https://api.themoviedb.org/3/movie/  ${result.id}  /watch/providers?api_key=a299fbe5ab099ad1c542674fd239f25d`)
+                fetch(`https://api.themoviedb.org/3/movie/${result.id}/watch/providers?api_key=a299fbe5ab099ad1c542674fd239f25d`)
                     .then(result => {
                         return result.json();
                     })
@@ -124,13 +132,47 @@
 
     });
 
-    function storeFavorite (favoriteButton, movieResult){
+    async function storeFavorite(favoriteButton, movieResult) {
         console.log(favoriteButton, movieResult);
         favoriteButton.style.setProperty("--favorite-color", "red");
-        //add API fetch
+        //add API fetch to pst movie route
+
         //update UI
-        
+        const movieData = { title: movieResult.title, poster: movieResult.poster_path, rating: movieResult.vote_average, releaseDate: movieResult.release_date, overview: movieResult.overview };
+        console.log(movieData);
+
+        const res = await fetch("/api/movie", {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'same-origin', // include, *same-origin, omit
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+
+            body: JSON.stringify(movieData)
+
+        });
+
+        const createdMovie = await res.json();
+        console.log(createdMovie);
+        const url = "/api/saves/";
+        const data = { movieId: createdMovie.id };
+        const response = await fetch(url, {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'same-origin', // include, *same-origin, omit
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: JSON.stringify(data) // body data type must match "Content-Type" header
+        });
+        return await response.json(); // parses JSON response into native JavaScript objects
     }
+
 </script>
 
 <script>

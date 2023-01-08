@@ -46,6 +46,14 @@ usersRouter.post("/signup", async (req, res) => {
     username,
     password,
   });
+  console.log('creatted user',newUserObject);
+
+  const token = jwt.sign({ id: newUserObject.id }, process.env.JWT_KEY);
+
+  res.cookie("logintoken", token, {
+    maxAge: 24 * 60 * 60 * 1000,
+    httpOnly: true,
+  });
 
   res.status(200).json(newUserObject);
 });
