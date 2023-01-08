@@ -136,7 +136,7 @@
     });
 
     async function storeFavorite(favoriteButton, movieResult) {
-        console.log(favoriteButton, movieResult);
+//        console.log(favoriteButton, movieResult);
         favoriteButton.style.setProperty("--favorite-color", "red");
         //add API fetch to pst movie route
 
@@ -144,7 +144,7 @@
         const movieData = { title: movieResult.title, poster: movieResult.poster_path, rating: movieResult.vote_average, releaseDate: movieResult.release_date, overview: movieResult.overview };
         console.log(movieData);
 
-        const res = await fetch("/api/movie", {
+        const favMovie = await fetch("/api/movie", {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -158,10 +158,11 @@
 
         });
 
-        const createdMovie = await res.json();
+        const createdMovie = await favMovie.json();
         console.log(createdMovie);
+
         const url = "/api/saves/";
-        const data = { movieId: createdMovie.id };
+        const savedMovie = { movieId: createdMovie.id, savedMovie: movieResult.title};
         const response = await fetch(url, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
@@ -171,9 +172,10 @@
                 'Content-Type': 'application/json'
                 // 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: JSON.stringify(data) // body data type must match "Content-Type" header
+            body: JSON.stringify(savedMovie) // body data type must match "Content-Type" header
         });
         return await response.json(); // parses JSON response into native JavaScript objects
+        console.log(savedMovie);
     }
 
 </script>
@@ -181,7 +183,7 @@
 <script>
     document.getElementById("logoutButton").addEventListener("click", () => {
         event.preventDefault();
-        console.log("clicking")
+//        console.log("clicking logout")
         window.location.replace('/')
     })
 </script>

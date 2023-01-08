@@ -51,7 +51,7 @@
       <span class="signup-close-button">&times;</span>
       <div>
         <label for="email"><b>Email</b></label>
-        <input type="text" id="sign-up-email" name="email" placeholder="Enter Email address" required>
+        <input type="email" id="sign-up-email" name="email" placeholder="Enter Email address" required>
       </div>
       <div>
         <label for="Firstname"><b>First Name</b></label>
@@ -175,7 +175,7 @@
   </div>
   <div id="search-results"></div>
 
-  <div id="results-container" style="display: none";>
+  <div id="results-container" style="display: none" ;>
     <div id="result-card-1">
       <h3 id="movie-title">Movie Title</h3>
       <p id="movie-description"></p>
@@ -188,36 +188,46 @@
 <!-- <script src = "/script.js" ></script> -->
 
 <script>
+  document.querySelector(".close-button").addEventListener("click", () => {
+    window.location.reload();
+  })
 
-    document.getElementById("login_form").addEventListener("submit", (event) => {
-      event.preventDefault();
+  document.querySelector(".login-close-button").addEventListener("click", () => {
+    window.location.reload();
+  })
 
-      const username = document.getElementById("login-username").value;
-      const password = document.getElementById("login-password").value;
+  document.querySelector(".signup-close-button").addEventListener("click", () => {
+    window.location.reload();
+  })
+  document.getElementById("login_form").addEventListener("submit", (event) => {
+    event.preventDefault();
 
-      console.log(username, password)
+    const username = document.getElementById("login-username").value;
+    const password = document.getElementById("login-password").value;
 
-      document.getElementById("login_errors").textContent = "";
+    console.log(username, password)
 
-      fetch("/api/user/login", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username,
-          password,
-        }),
-      }).then((result) => {
-        if (!result.ok) {
-          document.getElementById("login_errors").textContent = "Error: Unable to login";
+    document.getElementById("login_errors").textContent = "";
 
-        } else {
-          window.location.replace('/Profile')
-        }
-      })
+    fetch("/api/user/login", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    }).then((result) => {
+      if (!result.ok) {
+        document.getElementById("login_errors").textContent = "Error: Unable to login";
+        window.location.reload();
+      } else {
+        window.location.replace('/Profile')
+      }
+    })
 
-    });
+  });
 
   document.getElementById("signup_form").addEventListener("submit", (event) => {
     event.preventDefault();
@@ -255,64 +265,64 @@
 
   });
 
-    document.getElementById("searchInput").addEventListener("click", () => {
-        clearcontent();
-        function clearcontent() {
-            document.getElementById("search-results").innerHTML = "";
-        }
-        const queryText = document.getElementById("searchBar").value;
+  document.getElementById("searchInput").addEventListener("click", () => {
+    clearcontent();
+    function clearcontent() {
+      document.getElementById("search-results").innerHTML = "";
+    }
+    const queryText = document.getElementById("searchBar").value;
 
-        fetch("/search?searchQuery=" + queryText).then((result) => {
-            return result.json();
-        }).then((data) => {
-            //console logs the data from the search
-            console.log(data);
+    fetch("/search?searchQuery=" + queryText).then((result) => {
+      return result.json();
+    }).then((data) => {
+      //console logs the data from the search
+      console.log(data);
 
-            //console logs the results  
-            console.log(data.results);
+      //console logs the results  
+      console.log(data.results);
 
-            //Gets the individual titles, release date, ratings, and overview for the movies, can pull out the information from the array here
+      //Gets the individual titles, release date, ratings, and overview for the movies, can pull out the information from the array here
 
-            for (result of data.results.slice(0, 1)) {
-                const card = document.createElement('div');
-                const searchResults = document.getElementById("search-results");
-                card.classList.add('card');
-                searchResults.appendChild(card);
+      for (result of data.results.slice(0, 1)) {
+        const card = document.createElement('div');
+        const searchResults = document.getElementById("search-results");
+        card.classList.add('card');
+        searchResults.appendChild(card);
 
-                const poster = document.createElement('img');
-                poster.src = "https://image.tmdb.org/t/p/original/" + result.poster_path;
-                poster.alt = result.title;
-                poster.classList.add('card-image');
-                card.appendChild(poster);
+        const poster = document.createElement('img');
+        poster.src = "https://image.tmdb.org/t/p/original/" + result.poster_path;
+        poster.alt = result.title;
+        poster.classList.add('card-image');
+        card.appendChild(poster);
 
-                const info = document.createElement('div');
-                info.classList.add('card-info');
-                card.appendChild(info);
+        const info = document.createElement('div');
+        info.classList.add('card-info');
+        card.appendChild(info);
 
-                // poster, title, rating, releaseDate, overview
-
-
-
-                const title = document.createElement('h3');
-                title.classList.add('card-title');
-                title.textContent = result.title;
-                info.appendChild(title);
+        // poster, title, rating, releaseDate, overview
 
 
-                const rating = document.createElement('div');
-                rating.classList.add('card-rating');
-                rating.textContent = `Rating: ${result.vote_average}`;
-                info.appendChild(rating);
 
-                const releaseDate = document.createElement('div');
-                releaseDate.classList.add('release-date');
-                releaseDate.textContent = `Released On: ${result.release_date}`;
-                info.appendChild(releaseDate);
+        const title = document.createElement('h3');
+        title.classList.add('card-title');
+        title.textContent = result.title;
+        info.appendChild(title);
 
-                const overview = document.createElement('div');
-                overview.classList.add('overview');
-                overview.textContent = result.overview;
-                info.appendChild(overview);
+
+        const rating = document.createElement('div');
+        rating.classList.add('card-rating');
+        rating.textContent = `Rating: ${result.vote_average}`;
+        info.appendChild(rating);
+
+        const releaseDate = document.createElement('div');
+        releaseDate.classList.add('release-date');
+        releaseDate.textContent = `Released On: ${result.release_date}`;
+        info.appendChild(releaseDate);
+
+        const overview = document.createElement('div');
+        overview.classList.add('overview');
+        overview.textContent = result.overview;
+        info.appendChild(overview);
 
       }
     });

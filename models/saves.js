@@ -15,8 +15,8 @@ Save.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    userId: {
-      type: DataTypes.INTEGER,
+    savedMovie: {
+      type: DataTypes.STRING,
       allowNull: false,
     }
 
