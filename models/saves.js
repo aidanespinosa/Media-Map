@@ -1,38 +1,27 @@
 const { Model, DataTypes } = require("sequelize");
 
-class Save extends Model {}
+class Save extends Model { }
 const sequelize = require("../config/connection");
 
 Save.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
       autoIncrement: true,
+      primaryKey: true,
     },
-    movie_id: {
+
+    movieId: {
       type: DataTypes.INTEGER,
-      references: {
-        model: "movie",
-        key: "id",
-      },
+      allowNull: false,
     },
-    user_id: {
+    userId: {
       type: DataTypes.INTEGER,
-      references: {
-        model: "user",
-        key: "id",
-      },
-    },
+      allowNull: false,
+    }
+
   },
 
-  {
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: "save",
-  }
+  { sequelize, modelName: "save" }
 );
 module.exports = Save;
