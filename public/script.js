@@ -70,73 +70,48 @@ function toggleSignupModal() {
     signUpModal.classList.add("hidden");
 }
 
-let results = {
-    fetchMovie: function (movie) {
-        fetch("https://api.themoviedb.org/3/search/movie?api_key=" + apiKey + "&language=en-US&page=1&include_adult=false&query=" + movie)
-            .then((response) => response.json()).then((data) => this.displayResults(data));
-    },
+// let results = {
+//     fetchMovie: function (movie) {
+//         fetch("https://api.themoviedb.org/3/search/movie?api_key=" + apiKey + "&language=en-US&page=1&include_adult=false&query=" + movie)
+//             .then((response) => response.json()).then((data) => this.displayResults(data));
+//     },
 
-    displayResults: async function (data) {
-        data = data.results[0];
-        let name = data.original_title;
-        let description = data.overview;
-        let reviews = data.vote_average;
-        //let title = data.title;
-        document.querySelector(".title").innerText = name;
-        document.querySelector(".description").innerText = "Movie Summary: " + description;
-        document.querySelector(".review").innerText = "Viewer Score: " + reviews;
-        document.body.style.backgroundImage = "url(\"https://source.unsplash.com/1600x900/?movies)";
-        let provider = data.id;
-        const result = await fetch("https://api.themoviedb.org/3/movie/" + provider + "/watch/providers?api_key=" + apiKey);
-        let source = await result.json();
-        //let providers = source.results.flatrate[0].provider_name;
-        const providerMap = {};
-        Object.keys(source.results).forEach((key) => {
-            const data = source.results[key];
-            if (data.flatrate) {
-                for (const rate of data.flatrate) {
-                    providerMap[rate.provider_id] = rate.provider_name;
-                }
-            }
-        })
-        const providers = Object.values(providerMap).join(", ");
-        document.querySelector(".providers").innerText = "You can stream this on: " + providers;
-    },
+//     displayResults: function (data) {
+//         data = data.results[0];
+//         let name = data.original_title;
+//         let description = data.overview;/*description*/
+//         let reviews = data.vote_average;/*reviews*/
+//         console.log(data);
+//         console.log(name)
+//         console.log(description)
+//         console.log(reviews)
+//         document.body.style.backgroundImage = "url(\"https://source.unsplash.com/1600x900/?movie&query=" + name + ")";
+//     },
 
-    //this section theoretically populates a list of suggested movies, it does not work
-    /*fetchResults: function (features) {
-        const movieCard = document.querySelector(".movieCard");
-        movieCard.classList.remove("hidden");
-        fetch("https://api.themoviedb.org/3/search/movie?api_key=" + apiKey + "&language=en-US&page=1&include_adult=false&query=").then((response) => response.json()).then((data) => displayFeatures(data));
+//     /*fetchResults: function (movie) {
+//         fetch("https://api.themoviedb.org/3/search/" + movie + "?" + apiKey + "&language=en-US&page=1&include_adult=false").then((response) => response.json()).then((data) => displayFeatures(data));
 
-        function displayFeatures(features) {
-            features = data.results[i];
-            for (let i = 0; i < 6; i++) {
-                const thumbnail = features.poster_path;
-                let path = "https://image.tmdb.org/t/p/w500" + thumbnail;
-                // calls the results and returns a thumbnail to each feature card
-                document.querySelector(`.feature${i + 1}`).innerHTML = `<img src="${path}">`;
-            }
-        }
-    },*/
+//         function displayFeatures(data) {
+//             for (let i = 0; i < 6; i++) {
+//                 const thumbnail = data;/*thumbnail icon from API call
+//                 // calls the results and returns a thumbnail to each feature card, up to 6
+//                 document.querySelector(`.feature${i + 1}`).innerHTML = thumbnail;
+//             }
+//         }
+//     },*/
+    
+//     search: function () {
+//         this.fetchMovie(document.querySelector(".searchBar").value);
+//         resultsModal.classList.remove("hidden");
+//     },
+// };
 
-    search: function () {
-        let searchBar = document.querySelector(".searchBar").value;
-        if (searchBar.length == 0) {
-            return;
-        }
-        this.fetchMovie(searchBar);
-        resultsModal.classList.remove("hidden");
-        homeCard.classList.add("visibility");
-    },
-};
-
-document.querySelector(".mainBtn").addEventListener("click", function () {
-    results.search();
-});
-// allows for "enter" to be placed when searching instead of requiring a mouse click
-document.querySelector(".searchBar").addEventListener("keyup", function (event) {
-    if (event.key == "Enter") {
-        results.search();
-    }
-})
+// document.querySelector(".mainBtn").addEventListener("click", function () {
+//     results.search();
+// });
+// // allows for "enter" to be placed when searching instead of requiring a mouse click
+// document.querySelector(".searchBar").addEventListener("keyup", function (event) {
+//     if (event.key == "Enter") {
+//         results.search();
+//     }
+// })

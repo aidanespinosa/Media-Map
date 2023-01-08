@@ -9,6 +9,8 @@
   </div>
 </div>
 
+
+
 <!--Login Modal-->
 <div class="Login-Modal hidden">
   <div id="Login Modal" class="loginModal">
@@ -49,7 +51,7 @@
       <span class="signup-close-button">&times;</span>
       <div>
         <label for="email"><b>Email</b></label>
-        <input type="text" id="sign-up-email" name="email" placeholder="Enter Email address" required>
+        <input type="email" id="sign-up-email" name="email" placeholder="Enter Email address" required>
       </div>
       <div>
         <label for="Firstname"><b>First Name</b></label>
@@ -81,7 +83,7 @@
     </form>
   </div>
 </div>
-
+<!--
 <div class="card">
   <div class="header2">
     <h1 class="temp" style="color:black">Search for a Movie and we'll find where you can stream it<span
@@ -92,8 +94,9 @@
     </container>
   </div>
 </div>
-
+-->
 <!-- displays searched results -->
+<!--
 <div class="resultsModal hidden">
   <div class="resultsModalInner">
     <div class="results-modal-content">
@@ -108,7 +111,9 @@
     </div>
   </div>
 </div>
+-->
 <!-- Cards for Thumbnails to recommended movies -->
+<!--
 <div class="movieCard">
   <div class="recommendation" style="font-size:larger">You may also enjoy these Featured Flix:<span
       id="description"></span>
@@ -158,37 +163,72 @@
     </div>
   </div>
 </div>
+
+-->
+
+<div class="card">
+  <div>
+    <h2 class="search-title">Search for a movie or show to see where to stream it!</h2>
+    <container class="search">
+      <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie or Show">
+      <button type="button" class="mainBtn" id="searchInput">Search</button>
+    </container>
+  </div>
+  <div id="search-results"></div>
+
+  <div id="results-container" style="display: none" ;>
+    <div id="result-card-1">
+      <h3 id="movie-title">Movie Title</h3>
+      <p id="movie-description"></p>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- <script src = "/script.js" ></script> -->
+
 <script>
-  src = "/script.js" >
-    document.getElementById("login_form").addEventListener("submit", (event) => {
-      event.preventDefault();
+  document.querySelector(".close-button").addEventListener("click", () => {
+    window.location.reload();
+  })
 
-      const username = document.getElementById("login-username").value;
-      const password = document.getElementById("login-password").value;
+  document.querySelector(".login-close-button").addEventListener("click", () => {
+    window.location.reload();
+  })
 
-      console.log(username, password)
+  document.querySelector(".signup-close-button").addEventListener("click", () => {
+    window.location.reload();
+  })
+  document.getElementById("login_form").addEventListener("submit", (event) => {
+    event.preventDefault();
 
-      document.getElementById("login_errors").textContent = "";
+    const username = document.getElementById("login-username").value;
+    const password = document.getElementById("login-password").value;
 
-      fetch("/api/user/login", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username,
-          password,
-        }),
-      }).then((result) => {
-        if (!result.ok) {
-          document.getElementById("login_errors").textContent = "Error: Unable to login";
+    console.log(username, password)
 
-        } else {
-          window.location.replace('/Profile')
-        }
-      })
+    document.getElementById("login_errors").textContent = "";
 
-    });
+    fetch("/api/user/login", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    }).then((result) => {
+      if (!result.ok) {
+        document.getElementById("login_errors").textContent = "Error: Unable to login";
+        window.location.reload();
+      } else {
+        window.location.replace('/Profile')
+      }
+    })
+
+  });
 
   document.getElementById("signup_form").addEventListener("submit", (event) => {
     event.preventDefault();
@@ -220,13 +260,17 @@
         document.getElementById("signup_errors").textContent = "Error: Username is already taken";
         return null;
       } else {
-        window.location.replace('/');
+        window.location.replace('/Profile');
       }
     })
 
   });
 
   document.getElementById("searchInput").addEventListener("click", () => {
+    clearcontent();
+    function clearcontent() {
+      document.getElementById("search-results").innerHTML = "";
+    }
     const queryText = document.getElementById("searchBar").value;
 
     fetch("/search?searchQuery=" + queryText).then((result) => {
@@ -236,11 +280,51 @@
       console.log(data);
 
       //console logs the results  
-      console.log(data.results)
+      console.log(data.results);
 
       //Gets the individual titles, release date, ratings, and overview for the movies, can pull out the information from the array here
-      for (result of data.results) {
-        console.log((`Movie: ${result.title}\n  \nReleased in: ${result.release_date}\n  \nAverage Rating: ${result.vote_average}\n  \nOverview: ${result.overview}`))
+
+      for (result of data.results.slice(0, 1)) {
+        const card = document.createElement('div');
+        const searchResults = document.getElementById("search-results");
+        card.classList.add('card');
+        searchResults.appendChild(card);
+
+        const poster = document.createElement('img');
+        poster.src = "https://image.tmdb.org/t/p/original/" + result.poster_path;
+        poster.alt = result.title;
+        poster.classList.add('card-image');
+        card.appendChild(poster);
+
+        const info = document.createElement('div');
+        info.classList.add('card-info');
+        card.appendChild(info);
+
+        // poster, title, rating, releaseDate, overview
+
+
+
+        const title = document.createElement('h3');
+        title.classList.add('card-title');
+        title.textContent = result.title;
+        info.appendChild(title);
+
+
+        const rating = document.createElement('div');
+        rating.classList.add('card-rating');
+        rating.textContent = `Rating: ${result.vote_average}`;
+        info.appendChild(rating);
+
+        const releaseDate = document.createElement('div');
+        releaseDate.classList.add('release-date');
+        releaseDate.textContent = `Released On: ${result.release_date}`;
+        info.appendChild(releaseDate);
+
+        const overview = document.createElement('div');
+        overview.classList.add('overview');
+        overview.textContent = result.overview;
+        info.appendChild(overview);
+
       }
     });
   });
