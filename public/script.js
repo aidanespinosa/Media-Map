@@ -35,7 +35,7 @@ const signUpModal = document.querySelector(".signUp");
 
 const resultsCloseButton = document.querySelector(".results-close-button");
 
-resultsCloseButton.addEventListener("click", toggleResultsModal);
+//resultsCloseButton.addEventListener("click", toggleResultsModal);
 
 function toggleResultsModal() {
     resultsModal.classList.add("hidden");
@@ -69,6 +69,9 @@ signupCloseButton.addEventListener("click", toggleSignupModal);
 function toggleSignupModal() {
     signUpModal.classList.add("hidden");
 }
+
+var input = document.getElementById("searchInput");
+
 
 // let results = {
 //     fetchMovie: function (movie) {
