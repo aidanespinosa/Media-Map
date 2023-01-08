@@ -1,3 +1,8 @@
+/* tailwind directives*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Copied from Rays CSS stylesheet */
 body {
     display: flex;
