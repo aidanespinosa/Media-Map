@@ -1,34 +1,35 @@
-<div id="main-card">
-    <div id="profile-header">
-        <h2>Profile for {{user.username}} </h2>
-    </div>
-    <div id="search-section">
-        <div id="search-button">
-            <container class="search">
-                <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie or Show">
-                <button type="button" class="mainBtn" id="searchInput">Search</button>
-            </container>
-        </div>
-        <div>
-            <button type="button" class="mainBtn" id="logoutButton">Logout</button>
-        </div>
-        <div id="search-results">
-
-        </div>
-
-
-    </div>
-    <div class = "favorites-card">
-        <h2> Favorited Movies</h2>
-        <p>{{movie.title}}
-            {{movie.rating}}
-        </p>
-
-    </div>
-    
+<div>
+    <button type="button" class="mainBtn" id="logoutButton" style="position:absolute; top:0; right:0;">Logout</button>
 </div>
 
+<div id="profile-header">
+    <h1 style="color: white; position:absolute; top:0; left:0;">{{user.username}} </h1>
+</div>
 
+<div id="main-card">
+    <div class="card" style="position: relative; margin : 0 auto;">
+        <h2 style="text-align: center;">Go on, Search for a movie. Any movie!</h2>
+        <div id="search-section">
+            <div id="search-button">
+                <div class="search">
+                    <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie Title">
+                    <button type="button" class="mainBtn" id="searchInput">Search</button>
+                </div>
+            </div>
+        </div>
+        <div id="save_movie_errors"></div>
+
+        <div id="search-results"></div>
+
+    </div>
+
+    <div class="favorites-card hidden" style="color: white">
+        <h2> Favorited Movies</h2>
+        <p>{{movie.title}}
+            {{movie.rating}}</p>
+    </div>
+
+</div>
 
 <script>
 
