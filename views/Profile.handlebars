@@ -24,6 +24,8 @@
 
 <script>
 
+     
+
     document.getElementById("searchInput").addEventListener("click", () => {
         clearcontent();
         function clearcontent() {
@@ -59,7 +61,8 @@
                 card.appendChild(favoriteButton);
                 const favoriteData = result;
                 favoriteButton.addEventListener('click',(event)=>{
-                    storeFavorite(favoriteButton, favoriteData,);
+                    storeFavorite(favoriteButton,movieResult);
+                    console.log('working')
                 })
 
                 const info = document.createElement('div');
@@ -119,18 +122,26 @@
                     })
             }
         })
+    }
+    )
+    
 
 
 
-    });
-
-    function storeFavorite (favoriteButton, movieResult){
-        console.log(favoriteButton, movieResult);
+    const storeFavorite = async (favoriteButton, movieResult) => {
+        console.log("movie saved");
         favoriteButton.style.setProperty("--favorite-color", "red");
         //add API fetch
+        const saveMovieResponse = await fetch('/api/saves',{
+            method: 'POST',
+            body: JSON.stringify({title,poster,rating,releaseDate,overview}),
+            headers: {'Content-Type': 'application/json'},
+        })
+        const saveMovie = await saveMovieResponse.json();
         //update UI
-        
     }
+    
+   
 </script>
 
 <script>
