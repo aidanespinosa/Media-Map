@@ -175,7 +175,8 @@
     </container>
     <div>
       <h2 class="prompt hidden" style="text-align: center;">Login to <span style="color: rgb(165, 6, 6)">MEDIA
-          MAP</span> to view the platforms on which you can stream <span style="color: darkcyan">{{result.title}}</span>.</h2>
+          MAP</span> to view the platforms on which you can stream <span class="movieName"
+          style="color: darkcyan">"Insert Movie Name"</span>.</h2>
     </div>
   </div>
   <div id="search-results"></div>
@@ -242,6 +243,7 @@
     const firstname = document.getElementById("sign-up-first-name").value;
     const lastname = document.getElementById("sign-up-last-name").value;
     const email = document.getElementById("sign-up-email").value;
+    let movieName = document.querySelector("movieName");
 
     console.log(username, password)
 
@@ -307,7 +309,8 @@
 
         // poster, title, rating, releaseDate, overview
 
-
+        const name = result.title;
+        document.querySelector(".movieName").innerText = name;
 
         const title = document.createElement('h3');
         title.classList.add('card-title');
@@ -329,7 +332,6 @@
         overview.classList.add('overview');
         overview.textContent = result.overview;
         info.appendChild(overview);
-
       }
     });
   });
