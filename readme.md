@@ -7,7 +7,7 @@ A one-stop web-App wherein a user can search for the name of any given movie and
 - In today's digital era, it is no longer a simple task to "Google" something and get a straight answer. So Googling "Where can I stream X movie?" results in a convoluted list of articles you have to read or skim to get a single streaming service as the answer.
 - We built this project to alleviate the frustration of finding that special something to watch in today's digital age. 
 - Gone will be the days where clickbait articles and misleading titles give you false or misleading search results. This app will tell you straight forward search results, where you can watch your favorite movies and TV shows with ease and without having to sift through convoluted search results.
-- We learned many things, including how to develop web apps in the back end. Using mySQL, Sequelize, ORM, and working with various APIs (as well as building our own API) to communicate with various online libraries.
+- We learned many things, including how to develop web apps in the back end. Using mySQL, Sequelize, ORM, Handlebars, and working with various APIs (as well as building our own API) to communicate with various online libraries.
 
 ## Table of Contents
 
@@ -18,13 +18,13 @@ A one-stop web-App wherein a user can search for the name of any given movie and
 
 ## Installation
 
--This is a simple web app. No installation is necessary. Simply visit the URL (provided here (update later)), create an account, and start searching for your favorite movies and/or TV shows. It's really that simple.
+-This is a simple web app. No installation is necessary. Simply visit the URL (provided here (update later)), create an account if you like (or continue anonymously if preferred), and start searching for your favorite movies and/or TV shows. It's really that simple. The web app will tell you exactly where that movie or tv show is available for streaming.
 
 ## Usage
 
-Upon searching for a show, the web site will populate a list of streaming services that offer that result, sorted by price, with the free streaming options prioritized first.
+Upon searching for a show, the web site will populate a list of streaming services that offer that result. As well as the avg user rating for that movie, and a brief summary of the plot to ensure you got the right movie.
 
-![alt text](assets/images/screenshot.png) (add screenshot later)
+![Media Map](assets/images/mmscreenshot.png)
 
 ## Credits
 
@@ -63,8 +63,12 @@ SOFTWARE.
 
 ## Features
 
-If your project has a lot of features, list them here.
---Update this in the future
+- Search for movies or TV Shows
+- Get search results, as well as average user rating and a plot summary
+- Creat an account
+- Log in or Log out of your account
+- While logged in, save movies to your "favorites" selection
+- Get shown suggested movies you may like based on your favorites
 
 ## How to Contribute
 

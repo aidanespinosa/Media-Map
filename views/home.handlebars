@@ -8,67 +8,6 @@
     </div>
   </div>
 </div>
-{{!-- <div class="card">
-  <div class="header2">
-    <h1 class="temp" style="color:black">Search for a Movie and we'll find where you can stream it<span
-        style="color:rgb(1, 19, 119)"> for FREE!</span></h1>
-    <container class="search">
-      <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie or Show">
-      <button type="button" class="mainBtn" id="searchInput">Search</button>
-    </container>
-    <h2 class="cityName"></h2>
-    <div class="movieCard" style="width: 15rem;">
-      <div> <!-- Cards for Thumbnails to recommended movies -->
-        <div class="recommendation">Featured Free Flix: <span id="description" style="font-size:larger"></span>
-        </div>
-        <div class="row">
-          <div class="card" style="width: 4rem;">
-            <div class="card-body">
-              <div class="card-text">
-                <card class="feature1">Feature 1. <span id="feature1"></span></card>
-              </div>
-            </div>
-          </div>
-          <div class="card" style="width: 4rem;">
-            <div class="card-body">
-              <div class="card-text">
-                <card class="feature2">Feature 2. <span id="feature2"></span></card>
-              </div>
-            </div>
-          </div>
-          <div class="card" style="width: 4rem;">
-            <div class="card-body">
-              <div class="card-text">
-                <card class="feature3">Feature 3. <span id="feature3"></span></card>
-              </div>
-            </div>
-          </div>
-          <div class="card" style="width: 4rem;">
-            <div class="card-body">
-              <div class="card-text">
-                <card class="feature4">Feature 4. <span id="feature4"></span></card>
-              </div>
-            </div>
-          </div>
-          <div class="card" style="width: 4rem;">
-            <div class="card-body">
-              <div class="card-text">
-                <card class="feature5">Feature 5. <span id="feature5"></span></card>
-              </div>
-            </div>
-          </div>
-          <div class="card" style="width: 4rem;">
-            <div class="card-body">
-              <div class="card-text">
-                <card class="feature6">Feature 6. <span id="feature6"></span></card>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> --}}
 
 
 
@@ -145,20 +84,77 @@
   </div>
 </div>
 
-<div style="text-align:center">
-  <div class="resultsModal hidden">
-    <div class="resultsModalInner">
-      <div class="results-modal-content">
-        <span class="close-button">&times;</span>
-        <h2>Here is a list of platforms on which you can stream that:</h2>
-        <h1 style="padding: 10px; border: 2px solid red box-shadow: 2px 2px 7px 1px #FF0000;">MOVIE TITLE GOES HERE</h1>
-        <textbox>movie description goes here</textbox>
-        <list>1. result
-          2. result
-          3. result
-          4. result
-          5. result
-        </list>
+<div class="card">
+  <div class="header2">
+    <h1 class="temp" style="color:black">Search for a Movie and we'll find where you can stream it<span
+        style="color:rgb(1, 19, 119)"> for FREE!</span></h1>
+    <container class="search" style="position: relative; margin : 0 auto;">
+      <input type="search" class="searchBar" id="searchBar" placeholder="Enter a Movie or Show">
+      <button type="button" class="mainBtn" id="searchInput">Search</button>
+    </container>
+  </div>
+</div>
+
+<!-- displays searched results -->
+<div class="resultsModal hidden">
+  <div class="resultsModalInner">
+    <div class="results-modal-content">
+      <span class="results-close-button">&times;</span>
+      <h1 class="title" style="padding: 10px; border: 2px 2px 7px 1px #181818;">MOVIE TITLE GOES HERE</h1>
+      <p class="review" style="font-size:large">User Rating</p>
+      <textbox class="description" style="border-width:3px; border-style:solid; border-color:#161616; padding: 1em;">
+        movie description goes here</textbox>
+      <div>
+        <ul class="providers" style="font-size:large">Netflix</ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Cards for Thumbnails to recommended movies -->
+<div class="movieCard">
+  <div class="recommendation" style="font-size:larger">You may also enjoy these Featured Flix:<span id="description"></span>
+    <div class="row">
+      <div class="card" style="width: 4rem;">
+        <div class="card-body">
+          <div class="card-text">
+            <card class="feature1">Feature 1. <span id="feature1"></span></card>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="width: 4rem;">
+        <div class="card-body">
+          <div class="card-text">
+            <card class="feature2">Feature 2. <span id="feature2"></span></card>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="width: 4rem;">
+        <div class="card-body">
+          <div class="card-text">
+            <card class="feature3">Feature 3. <span id="feature3"></span></card>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="width: 4rem;">
+        <div class="card-body">
+          <div class="card-text">
+            <card class="feature4">Feature 4. <span id="feature4"></span></card>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="width: 4rem;">
+        <div class="card-body">
+          <div class="card-text">
+            <card class="feature5">Feature 5. <span id="feature5"></span></card>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="width: 4rem;">
+        <div class="card-body">
+          <div class="card-text">
+            <card class="feature6">Feature 6. <span id="feature6"></span></card>
+          </div>
+        </div>
       </div>
     </div>
   </div>

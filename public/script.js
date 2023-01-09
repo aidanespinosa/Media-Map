@@ -2,13 +2,17 @@ const searchButton = document.getElementById(".searchBar");
 const url = "https://api.themoviedb.org/3/search/movie?api_key=a299fbe5ab099ad1c542674fd239f25d&language=en-US&page=1&include_adult=false";
 const apiKey = "a299fbe5ab099ad1c542674fd239f25d";
 const readAccessToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMjk5ZmJlNWFiMDk5YWQxYzU0MjY3NGZkMjM5ZjI1ZCIsInN1YiI6IjYzYTI4ZjU5MmYzYjE3MDA4NWRkNDM0YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Uixy0unpQnM8ymcpZ71z1YTcv_PwBCSnK81qGl6PZ5Q";
+const providersUrl = "https://api.themoviedb.org/3/movie/{movie_id}/watch/providers?api_key=a299fbe5ab099ad1c542674fd239f25d";
+const watchProvidersUrl = "https://api.themoviedb.org/3/watch/providers/movie?api_key=a299fbe5ab099ad1c542674fd239f25d&language=en-US";
 
 const modal = document.querySelector(".modal");
 const trigger = document.querySelector(".trigger");
+const homeCard = document.querySelector(".card");
 const closeButton = document.querySelector(".close-button");
 const loginButton = document.querySelector(".loginButton");
 const signUpButton = document.querySelector(".signUpButton");
 const resultsModal = document.querySelector(".resultsModal");
+const recommendation = document.querySelector(".recommendation");
 
 function toggleModal() {
     modal.classList.toggle("show-modal");
@@ -28,6 +32,15 @@ loginButton.addEventListener("click", showLogin);
 signUpButton.addEventListener("click", showSignUp);
 const loginModal = document.querySelector(".Login-Modal");
 const signUpModal = document.querySelector(".signUp");
+
+const resultsCloseButton = document.querySelector(".results-close-button");
+
+resultsCloseButton.addEventListener("click", toggleResultsModal);
+
+function toggleResultsModal() {
+    resultsModal.classList.add("hidden");
+    homeCard.classList.remove("visibility");
+}
 
 function showLogin() {
     let loginModal = document.querySelector(".Login-Modal");
