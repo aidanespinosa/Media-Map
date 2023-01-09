@@ -1,18 +1,18 @@
 const { Router } = require("express");
 const { Save, User } = require("../../models");
 const saveRouter = new Router();
+const auth = require('../../utils/auth')
 
+// const jwt = require("jsonwebtoken");
 
-const jwt = require("jsonwebtoken");
+saveRouter.post("/",auth, async (req, res) => {
+  const { movieId, savedMovie} = req.body;
+//  const { logintoken } = req.cookies;
+//  let userId;
 
-saveRouter.post("/", async (req, res) => {
-  const { movieId } = req.body;
-  const { logintoken } = req.cookies;
-  let userId;
-
-  console.log('body is',req.body)
-  console.log('/api/saves logintoken',logintoken)
-  try {
+//  console.log('body is',req.body)
+//  console.log('/api/saves logintoken',logintoken)
+/*  try {
     const data = jwt.verify(logintoken, process.env.JWT_KEY);
     console.log(data);
 
@@ -32,12 +32,14 @@ saveRouter.post("/", async (req, res) => {
       console.log(error.message);
       res.status(500).end("Not good");
     }
-  }
+  } 
+  */
   try {
     const save = await Save.create({
-      userId: parseInt(userId),
       movieId: parseInt(movieId),
+      savedMovie,
     });
+    console.log(save);
     return res.json(save);
   } catch (err) {
     console.log(err);

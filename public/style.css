@@ -1,3 +1,8 @@
+/* tailwind directives*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Copied from Rays CSS stylesheet */
 body {
     display: flex;
@@ -7,7 +12,7 @@ body {
     margin: 0;
     min-height: 100vh;
     background: #222;
-    background-image: url("https://source.unsplash.com/1600x900/?movie");
+    background-image: url("https://source.unsplash.com/1600x900/?movies");
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -43,8 +48,16 @@ body {
     color: rgb(165, 6, 6);
 }
 
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .search {
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .searchBar {
@@ -55,7 +68,7 @@ body {
     border-radius: 9px;
     border: none;
     height: 2em;
-    width: 15em;
+    width: 20em;
     background: #c4c3c3a7;
     color: aliceblue;
 }
@@ -117,6 +130,10 @@ body {
     background: linear-gradient(to right, #1C6EA4 0%, #2388CB 65%, #144E75 100%);
 }
 
+.recommendation {
+    color: rgb(165, 6, 6);
+}
+
 .close-button {
     float: right;
     width: 1.5rem;
@@ -162,6 +179,25 @@ body {
     cursor: pointer;
 }
 
+.results-close-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: lightgray;
+}
+
+.results-close-button:hover {
+    background-color: darkgray;
+    cursor: pointer;
+}
+
+.visibility {
+    display: none;
+}
+
 .show-modal {
     opacity: 1;
     visibility: visible;
@@ -185,6 +221,7 @@ body {
     box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
     border: 2px solid rgb(28, 110, 164);
     display: inline-block;
+    margin-bottom: 20px;
 }
 
 .trigger:hover {
@@ -362,9 +399,10 @@ body {
 }
 
 .resultsModal {
-    position: fixed;
-    left: 0;
-    top: 0;
+    position: center;
+    background-color: rgb(84, 85, 85, .8);
+    padding: 2em;
+    border-radius: 30px;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
@@ -390,43 +428,47 @@ body {
 
 }
 
-
-
 .favorite-button {
     position: relative;
-    width: 100px;
-    height: 90px;
+    width: 25rem;
+    height: 25rem;
     margin-top: 10px;
     background: none;
     border: none;
     float: right;
-  }
-  
-  .favorite-button::before, .favorite-button::after {
+}
+
+.favorite-button::before,
+.favorite-button::after {
     content: "";
     position: absolute;
     top: 0;
     width: 52px;
     height: 80px;
     border-radius: 50px 50px 0 0;
-    background: var(--favorite-color,white);
-    
-  }
-  
-  .favorite-button::before {
+    background: var(--favorite-color, white);
+
+}
+
+.favorite-button::before {
     left: 50px;
     transform: rotate(-45deg);
     transform-origin: 0 100%;
-  }
-  
-  .favorite-button::after {
+}
+
+.favorite-button::after {
     left: 0;
     transform: rotate(45deg);
     transform-origin: 100% 100%;
-  }
-  
-  .favorite-button:hover::before, .favorite-button:hover::after {
-   
+}
+
+.favorite-button:hover::before,
+.favorite-button:hover::after {
+
     background: rgb(228, 29, 29);
-    
-  }
+
+}
+
+.prompt {
+    color:aliceblue;
+}

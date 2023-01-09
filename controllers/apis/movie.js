@@ -10,9 +10,9 @@ movieRouter.post("/", async (req, res) => {
       poster,
       rating,
       releaseDate,
-      overview,
-      
+      overview,  
     });
+    console.log('movie saved',movie);
     return res.json(movie);
   } catch (err) {
     console.log(err);
