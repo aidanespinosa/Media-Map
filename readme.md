@@ -32,7 +32,6 @@ Collaborators:
 - Ray Robinson @ https://Github.com/RayR124.
 - Aidan Espinoza @ https://github.com/aidanespinosa. 
 - Charles Cox @ https://Github.com/CharlesCoxC3. 
-- Kuan-Yu Huang @ https://Github.com/Jaq41000. 
 - Braxton Waxdeck @ https://Github.com/bbwax. 
 
 ## License
