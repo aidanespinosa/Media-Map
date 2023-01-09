@@ -1,49 +1,35 @@
+<div>
+    <button type="button" class="mainBtn" id="logoutButton" style="position:absolute; top:0; right:0;">Logout</button>
+</div>
+
+<div id="profile-header">
+    <h1 style="color: white; position:absolute; top:0; left:0;">{{user.username}} </h1>
+</div>
+
 <div id="main-card">
-    <div id="profile-header" class="title-bar">
-        <h2>Welcome, {{user.username}} </h2>
-        <div>
-            <button type="button" class="mainBtn" id="logoutButton">Logout</button>
-        </div>
-    </div>
-    <div id="search-section">
-        <div id="search-button" class='card'>
-            <container class="search">
-                <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie or Show">
-                <button type="button" class="mainBtn" id="searchInput">Search</button>
-            </container>
-
-
-
-
-
-        </div>
-        <div id="search-results">
-
-        </div>
-        <div class="favorites-card">
-            <div class="title-bar">
-                <h2> Favorited Movies</h2>
-            </div>
-
-            {{#movies}}
-            <div class='card'>
-                <img src="https://image.tmdb.org/t/p/original{{poster}}" alt={{title}} class='card-image'>
-                <div class='card-info'>
-                    <h3 class='card-title'>{{title}}</h3>
-                    <div class='card-rating'>Rating: {{rating}}</div>
-                    <div class="release-date">Release Date: {{releaseDate}}</div>
-                    <div class="overview">{{overview}}</div>
-
-
+    <div class="card" style="position: relative; margin : 0 auto;">
+        <h2 style="text-align: center;">Go on, Search for a movie. Any movie!</h2>
+        <div id="search-section">
+            <div id="search-button">
+                <div class="search">
+                    <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie Title">
+                    <button type="button" class="mainBtn" id="searchInput">Search</button>
                 </div>
             </div>
-            {{/movies}}
         </div>
+        <div id="save_movie_errors"></div>
+
+        <div id="search-results"></div>
 
     </div>
 
+    <div class="favorites-card hidden" style="color: white">
+        <h2> Favorited Movies</h2>
+        <p>{{movie.title}}
+            {{movie.rating}}</p>
+    </div>
 
-
+</div>
     <script>
 
         document.getElementById("searchInput").addEventListener("click", () => {
