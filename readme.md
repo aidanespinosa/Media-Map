@@ -24,7 +24,7 @@ A one-stop web-App wherein a user can search for the name of any given movie and
 
 Upon searching for a show, the web site will populate a list of streaming services that offer that result, sorted by price, with the free streaming options prioritized first.
 
-![alt text](assets/images/screenshot.png) (add screenshot later)
+![mmscreenshot](https://user-images.githubusercontent.com/112655058/211417826-7ddd5812-b494-4735-89b8-ceaa19f87d0b.png)
 
 ## Credits
 
