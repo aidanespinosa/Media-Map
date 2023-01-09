@@ -18,14 +18,23 @@
 
 
     </div>
-    <div class = "favorites-card">
+    <div class="favorites-card">
         <h2> Favorited Movies</h2>
-        <p>{{movie.title}}
-            {{movie.rating}}
-        </p>
-
+        {{#movies}}
+        <div class='card'>
+            <img src= "https://image.tmdb.org/t/p/original{{poster}}" alt={{title}} class = 'card-image'>
+            <div class='card-info'>
+                <h3 class='card-title'>{{title}}</h3>
+                <div class = 'card-rating'>{{rating}}</div>
+                <div class="release-date">{{releaseDate}}</div>
+                <div class="overview">{{overview}}</div>
+                
+                
+            </div>
+        </div>
+        {{/movies}}
     </div>
-    
+
 </div>
 
 

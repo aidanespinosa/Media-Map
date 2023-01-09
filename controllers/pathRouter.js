@@ -20,11 +20,11 @@ pathRouter.get("/Profile", async (req, res) => {
 
     const user = await User.findOne({where:{id},include: Movie});
     const plainUser = user.get({ plain: true });
-    console.log("user now",user);
+    console.log("user now",plainUser);
 
     res.render("Profile", {
       user: plainUser,
-      movies: user.movies
+      movies: plainUser.movies
       //saves
     });
   } catch (error) {
