@@ -46,7 +46,7 @@ usersRouter.post("/signup", async (req, res) => {
     username,
     password,
   });
-  console.log('created user',newUserObject);
+  console.log('creatted user',newUserObject);
 
   const token = jwt.sign({ id: newUserObject.id }, process.env.JWT_KEY);
 

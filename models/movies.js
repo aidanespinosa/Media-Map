@@ -1,13 +1,12 @@
 const { Model, DataTypes } = require("sequelize");
 
-class Movie extends Model { }
+class Movie extends Model {}
 const sequelize = require("../config/connection");
 
 Movie.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       autoIncrement: true,
       primaryKey: true,
     },
@@ -33,7 +32,7 @@ Movie.init(
     },
 
     overview: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: true,
     },
   },
