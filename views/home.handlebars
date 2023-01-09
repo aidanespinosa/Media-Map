@@ -262,6 +262,8 @@
   });
 
     document.getElementById("searchInput").addEventListener("click", () => {
+        let prompt = document.querySelector(".prompt");
+        prompt.classList.remove("hidden");
         clearcontent();
         function clearcontent() {
             document.getElementById("search-results").innerHTML = "";
