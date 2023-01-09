@@ -13,7 +13,7 @@
     <h1 class="temp" style="color:black">Search for a Movie and we'll find where you can stream it<span
         style="color:rgb(1, 19, 119)"> for FREE!</span></h1>
     <container class="search">
-      <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie or Show">
+      <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie Title">
       <button type="button" class="mainBtn" id="searchInput">Search</button>
     </container>
     <h2 class="cityName"></h2>
@@ -164,16 +164,19 @@
   </div>
 </div>
 
-
 <div class="card">
   <div>
-    <h2 class="search-title">Search for a movie or show to see where to stream it!</h2>
+    <h1 class="search-title" style="text-align: center;">Search for a movie and we'll show you all about it!</h1>
     <container class="search">
-      <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie or Show">
+      <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie Title">
       <button type="button" class="mainBtn" id="searchInput">Search</button>
     </container>
+    <div>
+      <h2 class="prompt hidden" style="text-align: center;">Login to <span style="color: rgb(165, 6, 6)">MEDIA
+          MAP</span> to view the platforms on which you can stream <span class="movieName"
+          style="color: darkcyan">"Insert Movie Name"</span>.</h2>
+    </div>
   </div>
-
   <div id="search-results"></div>
 
   <div id="results-container" style="display: none";>
@@ -227,6 +230,7 @@
     const firstname = document.getElementById("sign-up-first-name").value;
     const lastname = document.getElementById("sign-up-last-name").value;
     const email = document.getElementById("sign-up-email").value;
+    let movieName = document.querySelector("movieName");
 
     console.log(username, password)
 
@@ -256,6 +260,8 @@
   });
 
     document.getElementById("searchInput").addEventListener("click", () => {
+        let prompt = document.querySelector(".prompt");
+        prompt.classList.remove("hidden");
         clearcontent();
         function clearcontent() {
             document.getElementById("search-results").innerHTML = "";
@@ -291,7 +297,8 @@
 
                 // poster, title, rating, releaseDate, overview
 
-
+                const name = result.title;
+                document.querySelector(".movieName").innerText = name;
 
                 const title = document.createElement('h3');
                 title.classList.add('card-title');
