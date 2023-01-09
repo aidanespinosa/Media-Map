@@ -36,13 +36,20 @@
 <script>
 
     document.getElementById("searchInput").addEventListener("click", () => {
+
         clearcontent();
         function clearcontent() {
             document.getElementById("search-results").innerHTML = "";
         }
-        const queryText = document.getElementById("searchBar").value;
+
+        let queryText = document.getElementById("searchBar").value;
+        console.log(queryText);
+        if (queryText === ""){
+            queryText= "Marvel"
+        }
 
         fetch("/search?searchQuery=" + queryText).then((result) => {
+    //        console.log(result);
             return result.json();
         }).then((data) => {
             //console logs the data from the search

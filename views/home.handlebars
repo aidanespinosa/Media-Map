@@ -51,7 +51,7 @@
       <span class="signup-close-button">&times;</span>
       <div>
         <label for="email"><b>Email</b></label>
-        <input type="email" id="sign-up-email" name="email" placeholder="Enter Email address" required>
+        <input type="text" id="sign-up-email" name="email" placeholder="Enter Email address" required>
       </div>
       <div>
         <label for="Firstname"><b>First Name</b></label>
@@ -219,9 +219,12 @@
         password,
       }),
     }).then((result) => {
-      if (!result.ok) {
-        document.getElementById("login_errors").textContent = "Error: Unable to login";
-        window.location.reload();
+      if (result.status === 404 ) {
+        document.getElementById("login_errors").textContent = "Error: Unable To Login, Username Not Found!";
+        //        window.location.reload();
+      } else if (result.status === 401 ) {
+        document.getElementById("login_errors").textContent = "Error: Unable To Login, Password Incorrect!";
+        //        window.location.reload();
       } else {
         window.location.replace('/Profile')
       }
@@ -255,8 +258,18 @@
         email,
       }),
     }).then((result) => {
-      if (!result.ok) {
-        document.getElementById("signup_errors").textContent = "Error: Username is already taken";
+      if (result.status === 409) {
+        //        console.log(result)
+        document.getElementById("signup_errors").textContent = "Error: Username Already In Use!";
+        return null;
+      } else if (result.status === 406) {
+        document.getElementById("signup_errors").textContent = "Error: Email Not Valid, Please Use Valid Email!";
+        return null;
+      } else if (result.status === 411) {
+        document.getElementById("signup_errors").textContent = "Error: Password Length Is 5 Characters Minimum!";
+        return null;
+      } else if (result.status === 403) {
+        document.getElementById("signup_errors").textContent = "Error: Email Already In Use!";
         return null;
       } else {
         window.location.replace('/Profile');
