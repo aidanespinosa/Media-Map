@@ -70,6 +70,9 @@ function toggleSignupModal() {
     signUpModal.classList.add("hidden");
 }
 
+var input = document.getElementById("searchInput");
+
+
 // let results = {
 //     fetchMovie: function (movie) {
 //         fetch("https://api.themoviedb.org/3/search/movie?api_key=" + apiKey + "&language=en-US&page=1&include_adult=false&query=" + movie)

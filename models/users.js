@@ -1,6 +1,12 @@
 const bcrypt = require("bcrypt");
 const { Model, DataTypes } = require("sequelize");
+<<<<<<< HEAD
 class User extends Model {}
+=======
+const validator = require("validator");
+
+class User extends Model { }
+>>>>>>> f43802472ba75bc1861a1b2dd505751105dc8e5a
 const sequelize = require("../config/connection");
 
 

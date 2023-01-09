@@ -115,7 +115,8 @@
 <!-- Cards for Thumbnails to recommended movies -->
 <!--
 <div class="movieCard">
-  <div class="recommendation" style="font-size:larger">You may also enjoy these Featured Flix:<span id="description"></span>
+  <div class="recommendation" style="font-size:larger">You may also enjoy these Featured Flix:<span
+      id="description"></span>
     <div class="row">
       <div class="card" style="width: 4rem;">
         <div class="card-body">
@@ -167,11 +168,16 @@
 
 <div class="card">
   <div>
-    <h2 class="search-title">Search for a movie or show to see where to stream it!</h2>
+    <h1 class="search-title" style="text-align: center;">Search for a movie and we'll show you all about it!</h1>
     <container class="search">
-      <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie or Show">
+      <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie Title">
       <button type="button" class="mainBtn" id="searchInput">Search</button>
     </container>
+    <div>
+      <h2 class="prompt hidden" style="text-align: center;">Login to <span style="color: rgb(165, 6, 6)">MEDIA
+          MAP</span> to view the platforms on which you can stream <span class="movieName"
+          style="color: darkcyan">"Insert Movie Name"</span>.</h2>
+    </div>
   </div>
   <div id="search-results"></div>
 
@@ -240,6 +246,7 @@
     const firstname = document.getElementById("sign-up-first-name").value;
     const lastname = document.getElementById("sign-up-last-name").value;
     const email = document.getElementById("sign-up-email").value;
+    let movieName = document.querySelector("movieName");
 
     console.log(username, password)
 
@@ -279,20 +286,11 @@
   });
 
   document.getElementById("searchInput").addEventListener("click", () => {
-
-        clearcontent();
-        function clearcontent() {
-            document.getElementById("search-results").innerHTML = "";
-        }
-
-        let queryText = document.getElementById("searchBar").value;
-        console.log(queryText);
-        if (queryText === ""){
-            queryText= "Marvel"
-        }
-        
+    clearcontent();
+    function clearcontent() {
+      document.getElementById("search-results").innerHTML = "";
+    }
     const queryText = document.getElementById("searchBar").value;
-
     fetch("/search?searchQuery=" + queryText).then((result) => {
       return result.json();
     }).then((data) => {
@@ -322,6 +320,8 @@
 
         // poster, title, rating, releaseDate, overview
 
+
+
         const title = document.createElement('h3');
         title.classList.add('card-title');
         title.textContent = result.title;
@@ -342,7 +342,6 @@
         overview.classList.add('overview');
         overview.textContent = result.overview;
         info.appendChild(overview);
-
       }
     });
   });
