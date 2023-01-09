@@ -148,7 +148,7 @@
         //add API fetch to pst movie route
 
         //update UI
-        const movieData = { title: movieResult.title, poster: movieResult.poster_path, rating: movieResult.vote_average, releaseDate: movieResult.release_date, overview: movieResult.overview };
+        const movieData = { title: movieResult.title, poster: movieResult.poster_path, rating: movieResult.vote_average, releaseDate: movieResult.release_date, overview: movieResult.overview,};
         console.log(movieData);
 
         const favMovie = await fetch("/api/movie", {
@@ -166,10 +166,10 @@
         });
 
         const createdMovie = await favMovie.json();
-        console.log(createdMovie);
+//        console.log(createdMovie);
 
         const url = "/api/saves/";
-        const savedMovie = { movieId: createdMovie.id, savedMovie: movieResult.title};
+        const savedMovie = { savedMovie: movieResult.title};
         const response = await fetch(url, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
@@ -182,7 +182,8 @@
             body: JSON.stringify(savedMovie) // body data type must match "Content-Type" header
         });
         return await response.json(); // parses JSON response into native JavaScript objects
-        console.log(savedMovie);
+//        console.log(savedMovie);
+        
     }
 
 </script>

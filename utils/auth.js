@@ -13,7 +13,7 @@ module.exports = async (req, res, next) => {
 
     const { id } = data;
 
-    const user = await User.findOne({ where: { id }, include: Movie });
+    const user = await User.findOne({ where: { id }, });
     if (!user) {
       res.redirect("/");
       return;
@@ -30,7 +30,8 @@ module.exports = async (req, res, next) => {
       res.redirect("/");
     } else {
       console.log(error.message);
-      res.status(500).end("Not good");
+      res.status(500).end("Not good for you");
     }
+
   }
 };

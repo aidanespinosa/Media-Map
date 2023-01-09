@@ -11,26 +11,31 @@ Save.init(
       primaryKey: true,
     },
 
-    movieId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'movie',
-        key: 'id',
-      }
-    },
     savedMovie: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+
     userId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: 'user',
         key: 'id',
-      }
+        unique: false
+      } 
     },
+
+    movieId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'movie',
+        key: 'id',
+        unique: false
+      } 
+    },
+  
   },
 
   { sequelize, modelName: "save" }

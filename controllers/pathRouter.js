@@ -12,8 +12,14 @@ pathRouter.get("/", (req, res) => {
 
 pathRouter.get("/Profile", auth, async (req, res) => {
   const plainUser = req.user.get({ plain: true });
-  //  console.log("user now",user);
-
+/*
+ const saved_movies = await Save.findAll({
+    where: {
+     id:req.user.id, 
+    }
+  })
+  console.log(saved_movies)
+  */
   res.render("Profile", {
     user: plainUser,
     //saves
