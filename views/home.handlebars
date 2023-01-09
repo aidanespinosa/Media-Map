@@ -168,11 +168,15 @@
 
 <div class="card">
   <div>
-    <h2 class="search-title">Search for a movie or show to see where to stream it!</h2>
+    <h1 class="search-title" style="text-align: center;">Search for a movie and we'll show you all about it!</h1>
     <container class="search">
-      <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie or Show">
+      <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie Title">
       <button type="button" class="mainBtn" id="searchInput">Search</button>
     </container>
+    <div>
+      <h2 class="prompt hidden" style="text-align: center;">Login to <span style="color: rgb(165, 6, 6)">MEDIA
+          MAP</span> to view the platforms on which you can stream <span style="color: darkcyan">{{result.title}}</span>.</h2>
+    </div>
   </div>
   <div id="search-results"></div>
 
@@ -267,12 +271,13 @@
   });
 
   document.getElementById("searchInput").addEventListener("click", () => {
+    let prompt = document.querySelector(".prompt");
+    prompt.classList.remove("hidden");
     clearcontent();
     function clearcontent() {
       document.getElementById("search-results").innerHTML = "";
     }
     const queryText = document.getElementById("searchBar").value;
-
     fetch("/search?searchQuery=" + queryText).then((result) => {
       return result.json();
     }).then((data) => {

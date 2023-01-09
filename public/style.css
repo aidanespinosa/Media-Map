@@ -428,12 +428,10 @@ body {
 
 }
 
-
-
 .favorite-button {
     position: relative;
-    width: 100px;
-    height: 90px;
+    width: 25rem;
+    height: 25rem;
     margin-top: 10px;
     background: none;
     border: none;
@@ -469,4 +467,8 @@ body {
 
     background: rgb(228, 29, 29);
 
+}
+
+.prompt {
+    color:aliceblue;
 }

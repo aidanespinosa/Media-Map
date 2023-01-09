@@ -1,34 +1,34 @@
-<div id="main-card">
-    <div id="profile-header">
-        <h2>Profile for {{user.username}} </h2>
-    </div>
-    <div id="search-section">
-        <div id="search-button">
-            <container class="search">
-                <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie or Show">
-                <button type="button" class="mainBtn" id="searchInput">Search</button>
-            </container>
-        </div>
+<div>
+    <button type="button" class="mainBtn" id="logoutButton" style="position:absolute; top:0; right:0;">Logout</button>
+</div>
 
+<div id="profile-header">
+    <h1 style="color: white; position:absolute; top:0; left:0;">{{user.username}} </h1>
+</div>
+
+<div id="main-card">
+    <div class="card" style="position: relative; margin : 0 auto;">
+        <h2 style="text-align: center;">Go on, Search for a movie. Any movie!</h2>
+        <div id="search-section">
+            <div id="search-button">
+                <div class="search">
+                    <input type="input" class="searchBar" id="searchBar" placeholder="Enter a Movie Title">
+                    <button type="button" class="mainBtn" id="searchInput">Search</button>
+                </div>
+            </div>
+        </div>
         <div id="save_movie_errors"></div>
 
-        <div>
-            <button type="button" class="mainBtn" id="logoutButton">Logout</button>
-        </div>
-        <div id="search-results">
-
-        </div>
-
+        <div id="search-results"></div>
 
     </div>
-    <div class = "favorites-card">
+
+    <div class="favorites-card hidden" style="color: white">
         <h2> Favorited Movies</h2>
         <p>{{movie.title}}
-            {{movie.rating}}
-        </p>
-
+            {{movie.rating}}</p>
     </div>
-    
+
 </div>
 
 
@@ -37,6 +37,8 @@
 
     document.getElementById("searchInput").addEventListener("click", () => {
         clearcontent();
+        let prompt = document.querySelector(".prompt");
+        prompt.classList.remove("hidden");
         function clearcontent() {
             document.getElementById("search-results").innerHTML = "";
         }
@@ -125,8 +127,6 @@
                         streamingPlatform.textContent = "You can stream this on: " + providers;
                         console.log(providers);
                         info.appendChild(streamingPlatform);
-
-
                     })
             }
         })
@@ -136,7 +136,7 @@
     });
 
     async function storeFavorite(favoriteButton, movieResult) {
-//        console.log(favoriteButton, movieResult);
+        //        console.log(favoriteButton, movieResult);
         favoriteButton.style.setProperty("--favorite-color", "red");
         //add API fetch to pst movie route
 
@@ -162,7 +162,7 @@
         console.log(createdMovie);
 
         const url = "/api/saves/";
-        const savedMovie = { movieId: createdMovie.id, savedMovie: movieResult.title};
+        const savedMovie = { movieId: createdMovie.id, savedMovie: movieResult.title };
         const response = await fetch(url, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
@@ -183,7 +183,7 @@
 <script>
     document.getElementById("logoutButton").addEventListener("click", () => {
         event.preventDefault();
-//        console.log("clicking logout")
+        //        console.log("clicking logout")
         window.location.replace('/')
     })
 </script>

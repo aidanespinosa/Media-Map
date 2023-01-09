@@ -35,7 +35,7 @@ const signUpModal = document.querySelector(".signUp");
 
 const resultsCloseButton = document.querySelector(".results-close-button");
 
-//resultsCloseButton.addEventListener("click", toggleResultsModal);
+resultsCloseButton.addEventListener("click", toggleResultsModal);
 
 function toggleResultsModal() {
     resultsModal.classList.add("hidden");
