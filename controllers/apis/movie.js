@@ -11,7 +11,6 @@ movieRouter.post("/", async (req, res) => {
       rating,
       releaseDate,
       overview,
-      
     });
     return res.json(movie);
   } catch (err) {

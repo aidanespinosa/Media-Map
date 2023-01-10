@@ -22,7 +22,7 @@ Movie.init(
     },
 
     rating: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
 
