@@ -8,7 +8,7 @@ movieRouter.post("/", async (req, res) => {
     const movie = await Movie.create({
       title,
       poster,
-      rating: parseFloat(rating),
+      rating: rating.toString(),
       releaseDate,
       overview,
     });
