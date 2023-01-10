@@ -4,8 +4,16 @@ const Sequelize = require('sequelize');
 
 let sequelize;
 if (process.env.DATABASE_URL) {
-  console.log("SETTING DB USING URL",process.env.DATABASE_URL);
-  sequelize = new Sequelize(process.env.DB_URL,options={dialect:'postgres'});
+  console.log("SETTING DB USING URL", process.env.DATABASE_URL);
+  sequelize = new Sequelize(process.env.DATABASE_URL, {
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
+    }
+  }
+  );
 } else {
   sequelize = new Sequelize(
     process.env.DB_NAME,
