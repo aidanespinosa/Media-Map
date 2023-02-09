@@ -1,4 +1,5 @@
 # Media Map
+![MIT](https://img.shields.io/bower/l/MI?label=License&style=plastic)
 
 ## Description
 
@@ -18,7 +19,7 @@ A one-stop web-App wherein a user can search for the name of any given movie and
 
 ## Installation
 
--This is a simple web app. No installation is necessary. Simply visit the URL https://media-map-app.herokuapp.com, create an account, and start searching for your favorite movies and/or TV shows. It's really that simple.
+-This is a simple web app. No installation is necessary. Simply visit the URL https://media-map-app.herokuapp.com, create an account, and start searching for your favorite movies and we'll show you all the platforms where that movie can be streamed (plus more). It's really that simple.
 
 ## Usage
 
