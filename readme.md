@@ -1,4 +1,5 @@
-# Movie Map
+# Media Map
+![MIT](https://img.shields.io/bower/l/MI?label=License&style=plastic)
 
 ## Description
 
@@ -18,7 +19,7 @@ A one-stop web-App wherein a user can search for the name of any given movie and
 
 ## Installation
 
--This is a simple web app. No installation is necessary. Simply visit the URL (provided here (update later)), create an account, and start searching for your favorite movies and/or TV shows. It's really that simple.
+-This is a simple web app. No installation is necessary. Simply visit the URL https://media-map-app.herokuapp.com, create an account, and start searching for your favorite movies and we'll show you all the platforms where that movie can be streamed (plus more). It's really that simple.
 
 ## Usage
 
@@ -38,7 +39,7 @@ Collaborators:
 
 MIT License
 
-Copyright (c) [year] [fullname]
+Copyright (c) [year] [Stream Team]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -59,12 +60,3 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ---
-
-## Features
-
-If your project has a lot of features, list them here.
---Update this in the future
-
-## How to Contribute
-
-If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
