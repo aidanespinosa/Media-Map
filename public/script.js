@@ -1,5 +1,4 @@
 const searchButton = document.getElementById(".searchBar");
-const url = "https://api.themoviedb.org/3/search/movie?api_key=a299fbe5ab099ad1c542674fd239f25d&language=en-US&page=1&include_adult=false";
 //modals and buttons
 const modal = document.querySelector(".modal");
 const trigger = document.querySelector(".trigger");
